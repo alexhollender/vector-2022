@@ -1,0 +1,236 @@
+// --------------------------
+// S E A R C H
+// --------------------------
+div.header-middle {
+  a.search-icon {
+    display: none;
+    img { opacity: 1; }
+  }
+}
+
+div.search-container {
+  max-width: 415px;
+  height: 24px;
+  margin: 0;
+  flex-grow: 1;
+  display: flex;
+  position: relative;
+  border: 1px solid #A2A9B1;
+  border-radius: 2px;
+  background-color: #fff;
+
+  &:hover {
+    .search-button {
+      opacity: 1;
+    }
+  }
+
+  &.active {
+    border-radius: 2px 2px 0 0;
+    border: 1px solid transparent;
+
+    .search-icon {
+      opacity: 1;
+      left: 0;
+    }
+
+    input.search-input {
+      border-radius: 2px 0 0 0;
+      outline: 0;
+      border: 1px solid #3366cc;
+      box-shadow: inset 0 0 0 1px #3366cc;
+      transform: translateX(-20px);
+      padding: 5px 10px 5px 58px;
+      margin-right: -20px;
+    }
+
+    .search-button {
+      opacity: 1;
+    }
+
+    .search-results {
+      display: block;
+    }
+  }
+
+
+  &:focus-within {
+    border: 1px solid transparent;
+
+    .search-icon {
+      opacity: 1;
+      left: 0;
+    }
+
+    input.search-input {
+      border: 1px solid #A2A9B1;
+      transform: translateX(-20px);
+      padding: 5px 10px 5px 58px;
+      margin-right: -20px;
+    }
+
+    .search-button {
+      opacity: 1;
+    }
+  }
+
+  .search-icon {
+    position: absolute;
+    top: 3px;
+    left: 10px;
+    width: 18px;
+    height: 18px;
+    background-image: url('/img/search.svg');
+    background-size: cover;
+    z-index: 12;
+    opacity: 0.67;
+  }
+
+  input.search-input {
+    min-width: 0;
+    margin: 0;
+    padding: 5px 10px 5px 38px;
+    background-color: unset;
+    flex-grow: 1;
+    border: 1px solid transparent;
+    box-shadow: inset 0 0 0 1px transparent;
+    border-radius: 2px 0 0 2px;
+    margin: -1px 0 -1px -1px;
+    position: relative;
+    z-index: 10;
+    transition: border-color 200ms;
+
+    &:hover {
+      border: 1px solid #72777d;
+    }
+
+    &:focus {
+      outline: 0;
+      border: 1px solid #3366cc;
+      box-shadow: inset 0 0 0 1px #3366cc;
+      transform: translateX(-20px);
+      padding: 5px 10px 5px 58px;
+      margin-right: -20px;
+    }
+
+    &::placeholder {
+      color: #72777D;
+    }
+  }
+
+  .search-button {
+    opacity: 0;
+    height: 26px;
+    cursor: pointer;
+    background-color: #F8F9FA;
+    border: 1px solid #a2a9b1;
+    transition: all 200ms;
+    padding: 5px 12px;
+    position: relative;
+    align-self: center;
+    border-radius: 0 2px 2px 0;
+    display: flex;
+    align-items: center;
+    margin: -1px;
+
+    &:hover {
+      color: #404244;
+      background-color: #fff;
+      z-index: 11;
+    }
+
+    a {
+      color: #000;
+      font-weight: bold;
+    }
+
+    p { margin: 0; }
+
+    &.icon {
+      img { display: block; }
+      p { display: none; }
+    }
+  }
+
+  .search-results {
+    top: 25px;
+    left: -21px;
+    width: calc(100% - 49px);
+    max-width: none;
+    border-radius: 0 0 2px 2px;
+
+    &:hover {
+      li.selected {
+        background-color: transparent;
+      }
+    }
+
+    li {
+      padding: 0;
+      margin: 0;
+
+      &.selected {
+        background-color: #EAECF0;
+      }
+    }
+
+    .result-container {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 8px 10px;
+      cursor: pointer;
+      color: #222;
+      text-decoration: none;
+
+      &:hover, &:focus {
+        background-color: #F8F9FA;
+        a { text-decoration: underline; }
+      }
+
+      &.containing {
+        height: 34px;
+        border-top: 1px solid #C8CCD1;
+        display: flex;
+        align-items: center;
+        padding: 8px 10px;
+
+        img {
+          margin: 0 20px 0 10px;
+        }
+      }
+
+      .thumbnail {
+        width: 36px;
+        height: 36px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: 1px solid #EAECF0;
+        border-radius: 2px;
+        margin: 0 12px 0 0;
+      }
+
+      .titleDesc {
+        max-width: calc(100% - 48px);
+        .title {
+          margin: 0 0 2px 0;
+        }
+        .description {
+          color: #54595d;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+// below 725px
+@media (max-width: 1000px) {
+  div.search-container .searchResults {
+    width: calc(100% + 20px);
+  }
+}

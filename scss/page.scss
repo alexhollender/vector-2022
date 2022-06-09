@@ -1,0 +1,114 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  background-color: #fff;
+
+  a { color: #36c;
+    &.visited { color: #795cb2; }
+  }
+
+  button, input { font-size: 14px; }
+}
+
+// -----------------------------
+// O U T E R  C O N T A I N E R
+// -----------------------------
+#outer-container {
+  position: relative;
+  min-width: 470px;
+  margin: 0 auto;
+}
+
+// --------------------------
+// P A G E  C O N T A I N E R
+// --------------------------
+
+// wraps sidebar + article
+.page-container {
+  max-width: 1554px;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+  padding: 0 40px;
+
+  &.no-toc, &.hide-toc {
+    justify-content: center;
+  }
+
+  // wraps article title + article toolbar + article content
+  main.article-container {
+    max-width: 960px;
+    min-width: 0;
+    padding: 25px 45px 0 45px;
+    // to manage certain pages that break the layout
+    // overflow-x: hidden;
+
+    // wraps article content
+    .article-body {
+      min-height: 1500px;
+      border-right-width: 0;
+      border-left-width: 0;
+      border-bottom-width: 0;
+
+      p#from-wikipedia {
+        margin: 0.75em 0 15px 0;
+        font-size: 13px;
+      }
+
+      .mw-body.mw-body-content.content {
+        padding: 0.5em 0 1.5em 0;
+        margin: 0 0 0 0;
+        border: none;
+        overflow-x: hidden;
+        font-size: 16px;
+
+        &.font-14 { font-size: 14px; }
+
+        a { font-weight: normal; }
+      }
+    }
+  }
+}
+
+#footer {
+  margin: 50px 0;
+  padding: 2em 0;
+  border-top: 1px solid #a2a9b1;
+}
+
+#advanced-tools-control {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: #eeeeee;
+  padding: 12px;
+}
+
+// --------------------------
+// B R E A K  P O I N T S
+// --------------------------
+
+// below 1200px
+@media (max-width: 1200px) {
+  .page-container {
+    padding: 0 20px;
+
+    main.article-container {
+      padding: 25px 10px 0 10px;
+    }
+  }
+}
+
+// below 1000px
+@media (max-width: 1000px) {
+
+}
+
+// below 725px
+@media (max-width: 720px) {
+  .outer-container {
+    padding: 0 15px;
+  }
+}

@@ -1,0 +1,64 @@
+// logged-in state
+body.loggedIn div.page-container main.article-container div.header.article-toolbar {
+    // show Edit source tab
+    #read-edit-history {
+      #edit-source { display: flex; }
+    }
+
+    // show Watch button when logged-in
+    div#watch-tools {
+      padding-left: 12px;
+
+      #watch-button { display: flex; }
+    }
+}
+
+div.header.article-toolbar {
+  height: 34px;
+  border-bottom: 1px solid #EAECF0;
+  align-items: flex-end;
+
+  .tab-group {
+    justify-content: space-between;
+    display: flex;
+    transform: translateY(1px);
+
+    &#read-edit-history {
+      margin-left: auto;
+
+      #edit-source { display: none; }
+    }
+
+    &#watch-tools {
+      margin: 0 0 9px 12px;
+      position: relative;
+      z-index: 1;
+      border-left: 1px solid #EAECF0;
+      align-items: center;
+
+      #watch-button {
+        height: 20px;
+        display: none;
+      }
+    }
+
+    .tab {
+      border-bottom: 1px solid #ffffff00;
+      margin-right: 12px;
+      padding-bottom: 8px;
+      cursor: pointer;
+
+      &:last-child { margin-right: 0; }
+
+      &:hover {
+        border-bottom: 1px solid #000;
+        a { text-decoration: none; }
+      }
+
+      &.active {
+        border-bottom: 1px solid #000;
+        a { color: black; }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+	<title>
+		Artboard
+	</title>
+	<g id="Artboard" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+		<g id="menu" fill="#000" fill-rule="nonzero" transform="translate(1 3)">
+			<path id="Shape" d="M0,0 L0,2 L18,2 L18,0 L0,0 Z M0,8 L18,8 L18,6 L0,6 L0,8 Z M0,14 L18,14 L18,12 L0,12 L0,14 Z"/>
+		</g>
+	</g>
+</svg>

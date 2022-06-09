@@ -1,0 +1,137 @@
+// -------------------------------------
+// Menu component
+// -------------------------------------
+.menu {
+  list-style: none;
+  margin: 0;
+  width: max-content;
+  max-width: 250px;
+  position: absolute;
+  background-color: #fff;
+  z-index: 10;
+  border: 1px solid #cccccc;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+  flex-direction: column;
+  display: none;
+
+  &.show {
+    display: flex;
+  }
+
+  section {
+    padding: 0 0 4px 0;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #EAECF0;
+    display: flex;
+    flex-direction: column;
+
+    &:first-child {
+      margin-top: 4px;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .menu-section-heading {
+      margin: 10px 0 5px 0;
+      padding: 0 18px;
+      color: #54595d;
+    }
+
+    > span {
+      width: calc(100% - 36px);
+      padding: 5px 18px;
+      cursor: pointer;
+      &:hover a { text-decoration: underline; }
+    }
+  }
+}
+
+// Main menu
+#main-menu {
+  top: 60px;
+
+  section:first-child {
+    display: none;
+  }
+
+  #opt-out {
+    margin: 5px 0 10px 0;
+    padding-bottom: 15px;
+    padding-top: 10px;
+    font-weight: 700;
+    border-bottom: 1px solid #CCC;
+  }
+
+  #unpin-main-menu { display: none; }
+}
+
+// User menu
+.user-menu {
+  top: 44px;
+  max-width: 180px;
+}
+
+// Language menu
+div.language-menu {
+  top: 25px;
+  right: 0;
+  min-width: 514px;
+
+  #language-search {
+    img {
+      padding: 0 4px 0 12px;
+      opacity: 0.67;
+    }
+
+    input {
+      width: calc(100% - 38px);
+      height: 45px;
+      border: none;
+      outline: none;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  #language-list {
+    padding: 12px 40px;
+    border-top: 1px solid #C8CCD1;
+    max-height: 275px;
+    overflow: scroll;
+
+    .language-section-heading {
+      color: #54595d;
+      padding: 20px 0 12px 0;
+      &:first-child { padding: 8px 0 12px 0; }
+    }
+
+    .language-section {
+      display: flex;
+
+      div {
+        width: calc(33% - 12px);
+        padding-right: 12px;
+        display: flex;
+        flex-direction: column;
+
+        a {
+          padding: 8px 0;
+        }
+      }
+    }
+  }
+
+}
+
+// Article tools menu
+#article-tools-menu {
+  top: 24px;
+  right: 0;
+
+  #unpin-article-tools-menu { display: none; }
+
+}

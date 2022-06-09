@@ -1,0 +1,119 @@
+.menu {
+  list-style: none;
+  margin: 0;
+  width: max-content;
+  max-width: 250px;
+  position: absolute;
+  background-color: #fff;
+  z-index: 10;
+  border: 1px solid #cccccc;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+  flex-direction: column;
+  display: none;
+}
+.menu.show {
+  display: flex;
+}
+.menu section {
+  padding: 0 0 4px 0;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #EAECF0;
+  display: flex;
+  flex-direction: column;
+}
+.menu section:first-child {
+  margin-top: 4px;
+}
+.menu section:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.menu section .menu-section-heading {
+  margin: 10px 0 5px 0;
+  padding: 0 18px;
+  color: #54595d;
+}
+.menu section > span {
+  width: calc(100% - 36px);
+  padding: 5px 18px;
+  cursor: pointer;
+}
+.menu section > span:hover a {
+  text-decoration: underline;
+}
+
+#main-menu {
+  top: 60px;
+}
+#main-menu section:first-child {
+  display: none;
+}
+#main-menu #opt-out {
+  margin: 5px 0 10px 0;
+  padding-bottom: 15px;
+  padding-top: 10px;
+  font-weight: 700;
+  border-bottom: 1px solid #CCC;
+}
+#main-menu #unpin-main-menu {
+  display: none;
+}
+
+.user-menu {
+  top: 44px;
+  max-width: 180px;
+}
+
+div.language-menu {
+  top: 25px;
+  right: 0;
+  min-width: 514px;
+}
+div.language-menu #language-search img {
+  padding: 0 4px 0 12px;
+  opacity: 0.67;
+}
+div.language-menu #language-search input {
+  width: calc(100% - 38px);
+  height: 45px;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+div.language-menu #language-list {
+  padding: 12px 40px;
+  border-top: 1px solid #C8CCD1;
+  max-height: 275px;
+  overflow: scroll;
+}
+div.language-menu #language-list .language-section-heading {
+  color: #54595d;
+  padding: 20px 0 12px 0;
+}
+div.language-menu #language-list .language-section-heading:first-child {
+  padding: 8px 0 12px 0;
+}
+div.language-menu #language-list .language-section {
+  display: flex;
+}
+div.language-menu #language-list .language-section div {
+  width: calc(33% - 12px);
+  padding-right: 12px;
+  display: flex;
+  flex-direction: column;
+}
+div.language-menu #language-list .language-section div a {
+  padding: 8px 0;
+}
+
+#article-tools-menu {
+  top: 24px;
+  right: 0;
+}
+#article-tools-menu #unpin-article-tools-menu {
+  display: none;
+}
+
+/*# sourceMappingURL=menus.css.map */

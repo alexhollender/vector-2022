@@ -1,0 +1,60 @@
+body.loggedIn div.page-container main.article-container div.header.article-toolbar #read-edit-history #edit-source {
+  display: flex;
+}
+body.loggedIn div.page-container main.article-container div.header.article-toolbar div#watch-tools {
+  padding-left: 12px;
+}
+body.loggedIn div.page-container main.article-container div.header.article-toolbar div#watch-tools #watch-button {
+  display: flex;
+}
+
+div.header.article-toolbar {
+  height: 34px;
+  border-bottom: 1px solid #EAECF0;
+  align-items: flex-end;
+}
+div.header.article-toolbar .tab-group {
+  justify-content: space-between;
+  display: flex;
+  transform: translateY(1px);
+}
+div.header.article-toolbar .tab-group#read-edit-history {
+  margin-left: auto;
+}
+div.header.article-toolbar .tab-group#read-edit-history #edit-source {
+  display: none;
+}
+div.header.article-toolbar .tab-group#watch-tools {
+  margin: 0 0 9px 12px;
+  position: relative;
+  z-index: 1;
+  border-left: 1px solid #EAECF0;
+  align-items: center;
+}
+div.header.article-toolbar .tab-group#watch-tools #watch-button {
+  height: 20px;
+  display: none;
+}
+div.header.article-toolbar .tab-group .tab {
+  border-bottom: 1px solid #ffffff00;
+  margin-right: 12px;
+  padding-bottom: 8px;
+  cursor: pointer;
+}
+div.header.article-toolbar .tab-group .tab:last-child {
+  margin-right: 0;
+}
+div.header.article-toolbar .tab-group .tab:hover {
+  border-bottom: 1px solid #000;
+}
+div.header.article-toolbar .tab-group .tab:hover a {
+  text-decoration: none;
+}
+div.header.article-toolbar .tab-group .tab.active {
+  border-bottom: 1px solid #000;
+}
+div.header.article-toolbar .tab-group .tab.active a {
+  color: black;
+}
+
+/*# sourceMappingURL=article-toolbar.css.map */

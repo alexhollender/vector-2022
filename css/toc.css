@@ -1,0 +1,191 @@
+.page-container.no-toc .toc-wrapper {
+  display: none;
+}
+.page-container.hide-toc.toc-button-stick #left-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}
+.page-container.hide-toc.toc-button-stick #left-sidebar #toc-button {
+  position: initial;
+}
+.page-container.hide-toc.toc-button-stick #left-sidebar #toc-outer {
+  top: 30px;
+  left: 10px;
+}
+.page-container.hide-toc #left-sidebar #toc-button {
+  display: flex;
+  animation-name: blueFlash;
+  animation-fill-mode: forwards;
+  animation-duration: 1.5s;
+}
+.page-container.hide-toc #left-sidebar .toc-wrapper {
+  display: none;
+  position: absolute;
+  border: 1px solid #cccccc;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+  background: #fff;
+  top: 63px;
+  left: 42px;
+  margin: 0;
+}
+.page-container.hide-toc #left-sidebar .toc-wrapper.show {
+  display: block;
+}
+.page-container.hide-toc #left-sidebar .toc-wrapper .toc-header .contents-title #collapse-toc {
+  display: none;
+}
+.page-container.hide-toc #left-sidebar .toc-wrapper .toc-header .contents-title #pin-toc {
+  display: initial;
+}
+.page-container.hide-toc #Introduction {
+  margin-left: 32px;
+}
+
+#left-sidebar {
+  position: relative;
+}
+#left-sidebar #toc-button {
+  display: none;
+  position: absolute;
+  top: 28px;
+  right: -72px;
+  z-index: 9;
+}
+#left-sidebar .toc-wrapper {
+  min-width: 210px;
+  max-width: 210px;
+  height: fit-content;
+  max-height: 90vh;
+  margin: 65px 5px 0 0;
+  position: sticky;
+  top: 44px;
+  z-index: 1;
+  overflow-y: auto;
+  padding: 5px 5px 16px 20px;
+  display: block;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+}
+#left-sidebar .toc-wrapper .toc-header {
+  padding: 12px;
+  justify-content: space-between;
+  padding-left: 10px;
+  color: #54595d;
+}
+#left-sidebar .toc-wrapper .toc-header .contents-title {
+  margin: 0;
+}
+#left-sidebar .toc-wrapper ul {
+  list-style-type: none;
+  margin: 0;
+  line-height: 18px;
+  padding-right: 5px;
+}
+#left-sidebar .toc-wrapper ul li.toc-level-1 {
+  padding-left: 10px;
+  position: relative;
+}
+#left-sidebar .toc-wrapper ul li.toc-level-1 li {
+  display: none;
+}
+#left-sidebar .toc-wrapper ul li.toc-level-1.show-children li {
+  display: block;
+}
+#left-sidebar .toc-wrapper ul li.toc-level-1.parent span {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: -8px;
+  top: 5px;
+  cursor: pointer;
+  background-image: url("/img/toggle-sections-arrow.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: all 100ms;
+  transform: rotate(-90deg);
+}
+#left-sidebar .toc-wrapper ul li.toc-level-1.parent.show-children span {
+  transform: rotate(0deg);
+}
+#left-sidebar .toc-wrapper ul li.toc-level-2 {
+  margin-left: 8px;
+  font-weight: normal;
+}
+#left-sidebar .toc-wrapper ul li.toc-level-3 {
+  margin-left: 10px;
+}
+#left-sidebar .toc-wrapper ul li.toc-level-4 {
+  margin-left: 18px;
+}
+#left-sidebar .toc-wrapper a {
+  font-weight: normal;
+  padding: 2px 0 2px 0;
+  display: block;
+}
+#left-sidebar .toc-wrapper a.active {
+  color: black;
+}
+#left-sidebar .toc-wrapper #collapse-toc, #left-sidebar .toc-wrapper #pin-toc {
+  display: initial;
+}
+#left-sidebar .toc-wrapper #pin-toc {
+  display: none;
+}
+#left-sidebar .toc-wrapper #pin-toc span {
+  padding: 5px 0;
+}
+#left-sidebar .toc-wrapper a[href="#top"]:focus {
+  text-decoration: none;
+}
+
+@media (max-width: 1200px) {
+  .page-container.hide-toc #left-sidebar .toc-wrapper {
+    left: 9px;
+  }
+
+  #left-sidebar #toc-button {
+    right: -40px;
+  }
+}
+@media (max-width: 1000px) {
+  .page-container.toc-button-stick #left-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+  }
+  .page-container.toc-button-stick #left-sidebar #toc-button {
+    position: initial;
+  }
+  .page-container.toc-button-stick #left-sidebar #toc-outer {
+    top: 30px;
+    left: 10px;
+  }
+  .page-container #left-sidebar #toc-button {
+    display: flex;
+  }
+  .page-container #left-sidebar .toc-wrapper {
+    position: absolute;
+    border: 1px solid #cccccc;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+    background: #fff;
+    top: 65px;
+    left: 10px;
+    margin: 0;
+    display: none;
+  }
+  .page-container #left-sidebar .toc-wrapper.show {
+    display: block;
+  }
+  .page-container #left-sidebar .toc-wrapper .toc-header .contents-title #pin-toc {
+    display: none;
+  }
+  .page-container #Introduction {
+    margin-left: 32px;
+  }
+}
+
+/*# sourceMappingURL=toc.css.map */

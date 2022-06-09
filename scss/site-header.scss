@@ -1,0 +1,170 @@
+// --------------------------
+// S I T E  H E A D E R
+// --------------------------
+.site-header {
+  max-width: 1554px;
+  margin: 0 auto;
+  padding: 10px 40px 15px 40px;
+  position: relative;
+  z-index: 2;
+  align-items: center;
+
+  .header-left {
+    margin-right: 52px;
+
+    #main-menu-trigger {
+      align-self: center;
+      margin-right: 14px;
+      width: 20px;
+      background-image: url(/img/menu.svg);
+      background-size: auto;
+      background-position: center center;
+      background-repeat: no-repeat;
+
+      &.disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      height: 50px;
+      #globe {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+      }
+      .wordmark-tagline {
+        display: flex;
+        flex-direction: column;
+        #wordmark { margin-bottom: 5px; }
+      }
+    }
+  }
+
+  .header-middle {
+      flex-grow: 1;
+      min-width: 0;
+  }
+
+  .header-right {
+    margin: 0 0 0 20px;
+    z-index: -2;
+    position: relative;
+
+    #random-about-donate-links {
+      margin-right: 4px;
+      padding-right: 8px;
+      border-right: 1px solid #EAECF0;
+
+      a {
+        margin: 0 2px;
+      }
+    }
+
+    .compact-menu { display: none; }
+
+    .user-links-container {
+      align-items: center;
+      justify-content: flex-end;
+      &.logged-in { display: none; }
+      &.logged-out {
+        display: flex;
+      }
+
+      &.visible {
+        display: flex;
+      }
+    }
+  }
+}
+
+div.article-title {
+  border-bottom: 1px solid #a2a9b1;
+
+  .header-left {
+    h1 {
+      border-bottom: none;
+      margin: 0 !important;
+    }
+  }
+}
+
+// manage logged-in logged-out state
+body.loggedIn div.site-header .header-right {
+  #random-about-donate-links {
+    display: none;
+  }
+  .user-links-container {
+    &.logged-in { display: flex; }
+    &.logged-out { display: none; }
+  }
+}
+
+// --------------------------
+// B R E A K  P O I N T S
+// --------------------------
+
+@media (max-width: 1200px) {
+  .site-header {
+    padding: 10px 20px 15px 20px;
+    .header-middle {
+      flex-grow: initial;
+      width: 420px;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  #random-about-donate-links { display: none; }
+}
+
+// below 875px
+@media (max-width: 875px) {
+  .site-header {
+    .header-left {
+      #globe { display: none; }
+    }
+    .header-right {
+      flex-grow: 0;
+      margin: 0 0 0 15px;
+      .detailed-menu { display: none; }
+      .compact-menu { display: flex; }
+    }
+  }
+}
+
+// below 675px
+@media (max-width: 675px) {
+  body.loggedIn {
+    .site-header {
+      margin-right: auto;
+      .header-left { flex-grow: 1; }
+      .header-middle {
+        flex-grow: 0;
+        .search-icon { display: flex; }
+        .search-container { display: none; }
+      }
+      .header-right { margin: 0; }
+    }
+  }
+}
+
+// below 575px
+@media (max-width: 575px) {
+  .site-header {
+    margin-right: auto;
+
+    .header-left { flex-grow: 1; }
+
+    .header-middle {
+      flex-grow: 0;
+      .search-icon { display: flex; }
+      .search-container { display: none; }
+    }
+
+    .header-right { margin: 0; }
+  }
+}

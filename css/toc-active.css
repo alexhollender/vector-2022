@@ -1,0 +1,61 @@
+body[data-toc-active=bold] #left-sidebar .toc-wrapper a.active {
+  font-weight: bold;
+}
+body[data-toc-active=background] #left-sidebar .toc-wrapper .parent > a {
+  margin-bottom: 2px;
+}
+body[data-toc-active=background] #left-sidebar .toc-wrapper a {
+  padding: 2px 4px;
+  transform: translateX(-4px);
+}
+body[data-toc-active=background] #left-sidebar .toc-wrapper a.active {
+  background-color: #EAECF0;
+  display: inline-block;
+}
+body[data-toc-active=background] #left-sidebar .toc-wrapper a#collapse-toc {
+  padding: 0;
+}
+body[data-toc-active=line-border] #left-sidebar .toc-wrapper ul#table-of-contents {
+  border-left: 1px solid #C8CCD1;
+  margin-left: 10px;
+}
+body[data-toc-active=line-border] #left-sidebar .toc-wrapper ul#table-of-contents li.toc-level-1.parent span {
+  left: -19px;
+}
+body[data-toc-active=line-border] #left-sidebar .toc-wrapper ul#table-of-contents a.active::before {
+  content: "";
+  height: 18px;
+  width: 2px;
+  background-color: black;
+  position: absolute;
+  left: -1px;
+  margin-top: 2px;
+}
+body[data-toc-active=background-line] #left-sidebar .toc-wrapper .level-1 a {
+  padding: 2px 4px;
+  transform: translateX(-4px);
+}
+body[data-toc-active=background-line] #left-sidebar .toc-wrapper .level-1 a.active {
+  background-color: #EAF3FF;
+  display: inline-block;
+}
+body[data-toc-active=background-line] #left-sidebar .toc-wrapper .level-2 {
+  border-left: 1px solid #C8CCD1;
+  margin: 2px 0 2px 1px;
+}
+body[data-toc-active=background-line] #left-sidebar .toc-wrapper .level-2 a.active {
+  background-color: transparent;
+}
+body[data-toc-active=background-line] #left-sidebar .toc-wrapper .level-2 a.active::before {
+  content: "";
+  height: 18px;
+  width: 2px;
+  background-color: black;
+  position: absolute;
+  left: -5px;
+}
+body[data-toc-active=background-line] #left-sidebar .toc-wrapper .level-3 a.active::before {
+  left: -15px;
+}
+
+/*# sourceMappingURL=toc-active.css.map */

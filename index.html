@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Collapsible sidebars</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/page.css">
+  <link rel="stylesheet" href="css/vector.css">
+  <link rel="stylesheet" href="css/sticky-header.css">
+  <link rel="stylesheet" href="css/site-header.css">
+  <link rel="stylesheet" href="css/search.css">
+  <link rel="stylesheet" href="css/menus.css">
+  <link rel="stylesheet" href="css/sidebars.css">
+  <link rel="stylesheet" href="css/toc.css">
+  <link rel="stylesheet" href="css/article-header.css">
+  <link rel="stylesheet" href="css/article-toolbar.css">
+</head>
+
+<body class="background loggedIn" data-header-logo="rectangle-left">
+
+  <!-- site wrapper -->
+  <div id="outer-container">
+
+    <!-- Sticky header -->
+    <header id="sticky-header">
+      <div class="header">
+        <div class="header-left">
+          <!-- Search -->
+          <a class="button button-icon search-icon" onclick="showStickySearch()">
+            <img src="/img/search.svg" />
+          </a>
+          <div class="search-container" id="search-floating">
+            <div class="search-icon"></div>
+            <input placeholder="Search Wikipedia" onfocus="checkVal()" onblur="closeFloatingSearch()" class="search-input search-input-floating" id="floating-search-input"></input>
+            <button class="search-button" onclick="searchButtonClick()">
+              <p data-string="search">Search</p>
+            </button>
+            <div class="menu search-results search-results-floating"></div>
+          </div>
+          <!-- Article title -->
+          <div class="article-title-subheader">
+            <p class="title"></p>
+          </div>
+        </div>
+        <div class="header-right">
+          <!-- Article tools -->
+          <div class="button-group">
+            <a class="button button-icon" id="talk-sticky">
+              <img src="/img/talk.svg" onclick="switchToTalk()" />
+              <p class="tooltip" data-string="discussion">Talk</p>
+            </a>
+            <a class="button button-icon" id="article-sticky">
+              <img src="/img/article.svg" onclick="switchToArticle()" />
+              <p class="tooltip" data-string="discussion">Article</p>
+            </a>
+            <a class="button button-icon">
+              <img src="/img/history.svg" />
+              <p class="tooltip" data-string="history">History</p>
+            </a>
+            <a class="button button-icon">
+              <img src="/img/edit-source.svg" />
+              <p class="tooltip" data-string="editSourceString">Edit source</p>
+            </a>
+            <a class="button button-icon">
+              <img src="/img/edit.svg" />
+              <p class="tooltip" data-string="edit">Edit</p>
+            </a>
+          </div>
+          <!-- Language switcher & menu -->
+          <div class="languages-container">
+            <span class="link-button-icon dropdown language-button menu-handle spaced">
+              <img src="/img/languages-blue.svg" />
+              <a>
+                <span>98</span>
+                <span data-string="vector-languages">languages</span>
+              </a>
+            </span>
+            <div class="menu language-menu">
+              <div id="language-search">
+                <img src="/img/search.svg" />
+                <input placeholder="Search for a language" class=""></input>
+              </div>
+              <div id="language-list">
+                <div class="language-section-heading">Suggested languages</div>
+                <div class="language-section">
+                  <div>
+                    <a>中文</a>
+                    <a>日本語</a>
+                    <a>한국어</a>
+                    <a>Буряад</a>
+                  </div>
+                  <div>
+                    <a>Русский</a>
+                    <a>Deutsch</a>
+                    <a>Diné bizaad</a>
+                    <a>Español</a>
+                  </div>
+                  <div>
+                    <a>Français</a>
+                    <a>Italiano</a>
+                    <a>Tiếng Việt</a>
+                    <a>ייִדיש</a>
+                  </div>
+                </div>
+                <div class="language-section-heading">Worldwide</div>
+                <div class="language-section">
+                  <div>
+                    <a>Español</a>
+                    <a>Esperanto</a>
+                    <a>Français</a>
+                    <a>Ido</a>
+                    <a>Interlingua</a>
+                    <a>Interlingue</a>
+                  </div>
+                  <div>
+                    <a>Português</a>
+                    <a>Simple English</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- User menu -->
+          <a class="button button-icon button-menu user-menu-button menu-handle">
+            <img src="/img/user.svg" />
+            <img src="/img/down.svg" />
+          </a>
+          <div class="menu user-menu">
+            <section>
+              <span class="link-button-icon">
+                <img src="/img/user.svg" />
+                <a data-string="username">name_1993</a>
+              </span>
+              <span class="link-button-icon">
+                <img src="img/usertalk.svg" />
+                <a data-string="mytalk">Talk</a>
+              </span>
+              <span class="link-button-icon">
+                <img src="img/sandbox.svg" />
+                <a data-string="sandboxlink-portlet-label">Sandbox</a>
+              </span>
+              <span class="link-button-icon">
+                <img src="img/preferences.svg" />
+                <a data-string="mypreferences">Preferences</a>
+              </span>
+              <span class="link-button-icon">
+                <img src="img/beta.svg" />
+                <a data-string="betafeatures-toplink">Beta</a>
+              </span>
+              <span class="link-button-icon">
+                <img src="img/contribs.svg" />
+                <a data-string="mycontris">Contributions</a>
+              </span>
+              <span class="link-button-icon">
+                <img src="img/languages.svg" />
+                <a data-string="cx-campaign-contributionsmenu-mytranslations">Translations</a>
+              </span>
+              <span class="link-button-icon">
+                <img src="img/uploads.svg" />
+                <a data-string="cx-campaign-contributionsmenu-myuploads">Uploaded media</a>
+              </span>
+            </section>
+            <section>
+              <span class="link-button-icon" onclick="switchLoginState()">
+                <img src="img/logout.svg" />
+                <a data-string="pt-userlogout">Log out</a>
+              </span>
+            </section>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Site header -->
+    <div class="site-header-wrapper">
+      <div class="header site-header">
+        <div id="site-header-left" class="header-left">
+
+          <!-- main menu -->
+          <a id="main-menu-trigger" class="button button-icon menu-handle"></a>
+          <div id="main-menu" class="menu">
+            <section>
+              <span id="pin-main-menu" class="link-button-icon" onclick="moveMainMenuToSidebar()">
+                <img src="img/pin-down.svg">
+                <a data-string="pinMenuToSidebar">Pin menu to sidebar</a>
+              </span>
+              <span id="unpin-main-menu" class="link-button-icon" onclick="moveMainMenuToHeader()">
+                <img src="img/pin-up.svg">
+                <a data-string="collapseMenu">Un-pin menu</a>
+              </span>
+            </section>
+            <section>
+              <p class="menu-section-heading" data-string="toolbox">General</p>
+              <span><a data-string="mainpage-description">Main page</a></span>
+              <span><a data-string="contents">Contents</a></span>
+              <span><a data-string="currentevents">Current events</a></span>
+              <span><a data-string="randompage">Random article</a></span>
+            </section>
+            <section>
+              <p class="menu-section-heading" data-string="toolbox">Community</p>
+              <span><a data-string="portal">Community portal</a></span>
+              <span><a data-string="recentchanges">Recent changes</a></span>
+              <span><a data-string="specialpages">Special pages</a></span>
+              <span><a data-string="upload">Upload file</a></span>
+              <span><a data-string="help">Help</a></span>
+            </section>
+            <section>
+              <p class="menu-section-heading" data-string="toolbox">Wikipedia</p>
+              <span><a data-string="aboutsite">About Wikipedia</a></span>
+              <span><a data-string="sitesupport">Donate to Wikipedia</a></span>
+              <span><a data-string="contactpage">Contact page</a></span>
+            </section>
+          </div>
+
+          <!-- logo -->
+          <div class="logo">
+            <img id="globe" src="/img/globe.png" />
+            <div class="wordmark-tagline">
+              <span data-string="wordmarkImg"><img id="wordmark" src="/img/logos/wordmark-en.svg" /></span>
+              <span data-string="taglineImg"><img id="tagline" src="/img/logos/tagline-en.svg" /></span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="header-middle">
+          <!-- Search -->
+          <a class="button search-icon">
+            <img src="/img/search.svg" />
+          </a>
+          <div class="search-container" id="search-top">
+            <div class="search-icon"></div>
+            <input placeholder="Search Wikipedia" onfocus="checkVal()" class="search-input search-input-top"></input>
+            <button class="search-button" onclick="searchButtonClick()">
+              <a data-string="searchbutton">Search</a>
+            </button>
+            <div class="menu search-results"></div>
+          </div>
+        </div>
+
+        <div class="header-right">
+
+          <div id="random-about-donate-links">
+            <a >Random</a> •
+            <a >About</a> •
+            <a >Donate</a>
+          </div>
+
+          <!-- Logged out links -->
+          <div class="user-links-container logged-out">
+            <a class="spaced detailed-menu" data-string="pt-createaccount">Create account</a>
+
+            <!-- menu -->
+            <a class="button button-icon user-menu-button menu-handle">
+              <img src="/img/more.svg">
+            </a>
+            <div class="menu user-menu">
+              <section>
+                <span class="link-button-icon compact-menu">
+                  <img src="img/user.svg">
+                  <a data-string="pt-createaccount">Create account</a>
+                </span>
+                <span class="link-button-icon" onclick="switchLoginState()">
+                  <img src="img/login.svg">
+                  <a data-string="pt-login">Log in</a>
+                </span>
+              </section>
+              <section>
+                <span data-string="vector-anon-user-menu-pages">Pages for logged-out editors (<a href="">learn more</a>):</span>
+                <span><a data-string="mytalk">Talk</a></span>
+                <span><a data-string="mycontribs">Contributions</a></span>
+              </section>
+            </div>
+          </div>
+
+          <!-- Logged in links -->
+          <div class="user-links-container logged-in">
+            <a class="spaced detailed-menu" data-string="username">name_1993</a>
+            <a class="button button-icon disabled"><img src="/img/bell.svg" /></a>
+            <a class="button button-icon disabled"><img src="/img/inbox.svg" /></a>
+            <a class="button button-icon"><img src="/img/watchlist.svg" /></a>
+
+            <!-- menu -->
+            <a class="button button-icon user-menu-button menu-handle">
+              <img src="/img/user.svg">
+              <img src="/img/down.svg">
+            </a>
+            <div class="menu user-menu">
+              <section>
+                <span class="compact-menu link-button-icon">
+                  <img src="/img/user.svg" />
+                  <a data-string="username">name_1993</a>
+                </span>
+                <span class="link-button-icon">
+                  <img src="img/usertalk.svg" />
+                  <a data-string="mytalk">Talk</a>
+                </span>
+                <span class="link-button-icon">
+                  <img src="img/sandbox.svg" />
+                  <a data-string="sandboxlink-portlet-label">Sandbox</a>
+                </span>
+                <span class="link-button-icon">
+                  <img src="img/preferences.svg" />
+                  <a data-string="mypreferences">Preferences</a>
+                </span>
+                <span class="link-button-icon">
+                  <img src="img/beta.svg" />
+                  <a data-string="betafeatures-toplink">Beta</a>
+                </span>
+                <span class="link-button-icon">
+                  <img src="img/contribs.svg" />
+                  <a data-string="mycontris">Contributions</a>
+                </span>
+                <span class="link-button-icon">
+                  <img src="img/languages.svg" />
+                  <a data-string="cx-campaign-contributionsmenu-mytranslations">Translations</a>
+                </span>
+                <span class="link-button-icon">
+                  <img src="img/uploads.svg" />
+                  <a data-string="cx-campaign-contributionsmenu-myuploads">Uploaded media</a>
+                </span>
+              </section>
+              <section>
+                <span class="link-button-icon" onclick="switchLoginState()">
+                  <img src="img/logout.svg" />
+                  <a data-string="pt-userlogout">Log out</a>
+                </span>
+              </section>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Page container -->
+    <div class="page-container hide-article-tools">
+
+      <!-- Left sidebar (ToC, Main menu) -->
+      <div id="left-sidebar" class="sidebar-wrapper">
+        <a id="toc-button" class="button menu-handle">
+          <img src="/img/toc.svg" />
+        </a>
+        <div id="toc-outer" class="toc-wrapper menu">
+          <div class="toc-header header">
+            <p class="contents-title" data-string="toc">Contents
+              <span>[<a id="collapse-toc" onclick="moveToC()" title="move to article header">hide</a><a id="pin-toc" onclick="moveToC()" title="move to sidebar">move to sidebar</a>]</span>
+            </p>
+          </div>
+          <ul id="table-of-contents" class="level-1">
+            <li class="toc-level-1">
+              <a href="#top" data-string="introduction">Introduction</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Page content -->
+      <main class="article-container">
+
+        <div id="article-borders-container"></div>
+
+        <!-- Article header -->
+        <div class="header article-header" id="article-header">
+          <div class="header-left">
+            <h1 id="Introduction"></h1>
+          </div>
+          <div class="header-right">
+            <div class="languages-container languages-container">
+              <span class="link-button-icon dropdown language-button menu-handle">
+                <img id="language-icon" src="/img/languages-blue.svg" />
+                <a>
+                  <span>98</span>
+                  <span data-string="vector-languages">languages</span>
+                </a>
+              </span>
+              <div class="menu language-menu">
+                <div id="language-search">
+                  <img src="/img/search.svg" />
+                  <input placeholder="Search for a language" class=""></input>
+                </div>
+                <div id="language-list">
+                  <div class="language-section-heading">Suggested languages</div>
+                  <div class="language-section">
+                    <div>
+                      <a>中文</a>
+                      <a>日本語</a>
+                      <a>한국어</a>
+                      <a>Буряад</a>
+                    </div>
+                    <div>
+                      <a>Русский</a>
+                      <a>Deutsch</a>
+                      <a>Diné bizaad</a>
+                      <a>Español</a>
+                    </div>
+                    <div>
+                      <a>Français</a>
+                      <a>Italiano</a>
+                      <a>Tiếng Việt</a>
+                      <a>ייִדיש</a>
+                    </div>
+                  </div>
+                  <div class="language-section-heading">Worldwide</div>
+                  <div class="language-section">
+                    <div>
+                      <a>Español</a>
+                      <a>Esperanto</a>
+                      <a>Français</a>
+                      <a>Ido</a>
+                      <a>Interlingua</a>
+                      <a>Interlingue</a>
+                    </div>
+                    <div>
+                      <a>Português</a>
+                      <a>Simple English</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article toolbar -->
+        <div class="header article-toolbar">
+          <div id="article-talk" class="tab-group">
+            <div id="article-tab" class="tab active" onclick="switchToArticle()">
+              <a  data-string="nstab-main">Article</a>
+            </div>
+            <div id="talk-tab" class="tab" onclick="switchToTalk()">
+              <a  data-string="talk">Talk</a>
+            </div>
+          </div>
+          <div id="read-edit-history" class="tab-group">
+            <div class="tab active">
+              <a  data-string="skin-view-view">Read</a>
+            </div>
+            <div class="tab">
+              <a  data-string="edit">Edit</a>
+            </div>
+            <div class="tab" id="edit-source">
+              <a  data-string="visualeditor-ca-editsource">Edit source</a>
+            </div>
+            <div class="tab">
+              <a  data-string="skin-view-history">View history</a>
+            </div>
+          </div>
+          <div id="watch-tools" class="tab-group">
+            <a id="watch-button">
+              <img src="/img/watch.svg" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Article body -->
+        <div class="article-body">
+          <p id="from-wikipedia" data-string="tagline">From Wikipedia, the free encyclopedia</p>
+          <div class="mw-body mw-body-content content"></div>
+        </div>
+
+        <!-- Footer -->
+        <div id="footer" role="contentinfo">
+        	<ul id="footer-info" class="">
+        		<li id="footer-info-lastmod"> This page was last edited on 2 April 2020, at 21:36<span class="anonymous-show">&nbsp;(UTC)</span>.</li>
+        		<li id="footer-info-copyright">Text is available under the <a rel="license" href="//en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;additional terms may apply.  By using this site, you agree to the <a href="//foundation.wikimedia.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="//foundation.wikimedia.org/wiki/Privacy_policy">Privacy Policy</a>. Wikipedia® is a registered trademark of the <a href="//www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+        	</ul>
+        	<ul id="footer-places" class="">
+        		<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Privacy_policy" class="extiw" title="wmf:Privacy policy">Privacy policy</a></li>
+        		<li id="footer-places-about"><a href="/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+        		<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+        		<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+        		<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+        		<li id="footer-places-statslink"><a href="https://stats.wikimedia.org/#/en.wikipedia.org">Statistics</a></li>
+        		<li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Cookie_statement">Cookie statement</a></li>
+        		<li id="footer-places-mobileview"><a href="//en.m.wikipedia.org/w/index.php?title=Hathor&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+        	   <li class="rt-enableItem"><a href="javascript:">Enable Reference Tooltips</a></li>
+             <li style="display: none;"><a href="#">Enable previews</a></li>
+          </ul>
+        	<ul id="footer-icons" class="noprint">
+        		<li id="footer-copyrightico"><a href="https://wikimediafoundation.org/"><img src="/img/mediawiki.png" width="88" height="31" alt="Wikimedia Foundation"></a></li>
+        		<li id="footer-poweredbyico"><a href="https://www.mediawiki.org/"><img src="/img/wikimedia.png" alt="Powered by MediaWiki" width="88" height="31"></a></li>
+        	</ul>
+        	<div style="clear: both;"></div>
+        </div>
+      </main>
+
+      <div id="right-sidebar">
+        <span class="link-button-icon dropdown menu-handle" id="article-tools-button">
+          <a data-string="toolbox">Tools</a>
+        </span>
+
+        <!-- Article tools menu -->
+        <div id="article-tools-menu" class="menu">
+          <section id="article-tools-menu-heading">
+            <p class="menu-section-heading">
+              <span id="tools-heading-text">Tools</span>
+               <span>
+                 [<a id="unpin-article-tools" onclick="moveArticleTools()" title="move to article toolbar">hide</a><a id="pin-article-tools-menu" onclick="moveArticleTools()" data-string="pinMenuToSidebar">move to sidebar</a>]
+               </span>
+            </p>
+          </section>
+          <section class="collapsible">
+            <p class="menu-section-heading" data-string="toolbox">General</p>
+            <span><a data-string="whatlinkshere">What links here</a></span>
+            <span><a data-string="recentchangeslinked-toolbox">Related changes</a></span>
+            <span><a data-string="pageinfo-toolboxlink">Page information</a></span>
+            <span><a data-string="wikibase-editlinkstitle">Add interlanguage links</a></span>
+          </section>
+          <section class="collapsible">
+            <p class="menu-section-heading" data-string="wikibase-otherprojects">In other projects</p>
+            <span><a>Wikimedia Commons</a></span>
+            <span><a>Wikinews</a></span>
+            <span><a>Wikiquote</a></span>
+            <span><a>Wikivoyage</a></span>
+          </section>
+          <section class="collapsible">
+            <p class="menu-section-heading" data-string="coll-print_export">Print, share, link</p>
+            <span><a data-string="permalink">Permanent link</a></span>
+            <span><a data-string="citethispage-link">Cite this page</a></span>
+            <span><a data-string="downloadPDF">Download as PDF</a></span>
+            <span><a data-string="printableversion">Printable version</a></span>
+          </section>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous">
+  </script>
+  <script src="/js/search.js"></script>
+  <script src="/js/menus.js"></script>
+  <script src="/js/languages.js"></script>
+  <script src="/js/translatedStrings.js"></script>
+  <script src="/js/toc.js"></script>
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

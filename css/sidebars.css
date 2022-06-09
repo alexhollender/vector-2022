@@ -1,0 +1,179 @@
+.page-container.hide-article-tools #right-sidebar #article-tools-button {
+  display: flex;
+}
+.page-container.hide-article-tools #right-sidebar #article-tools-button.highlight {
+  animation-name: blueFlash;
+  animation-fill-mode: forwards;
+  animation-duration: 1.5s;
+}
+.page-container.hide-article-tools #right-sidebar #article-tools-menu {
+  width: max-content;
+  position: absolute;
+  top: 98px;
+  right: 44px;
+  border: 1px solid #cccccc;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+  margin: 0;
+  z-index: 11;
+  display: none;
+}
+.page-container.hide-article-tools #right-sidebar #article-tools-menu.show {
+  display: block;
+}
+.page-container.hide-article-tools #right-sidebar #article-tools-menu #unpin-article-tools {
+  display: none;
+}
+.page-container.hide-article-tools #right-sidebar #article-tools-menu #pin-article-tools-menu {
+  display: initial;
+}
+.page-container.hide-article-tools #right-sidebar #article-tools-menu section p {
+  padding: 0 18px;
+}
+.page-container.hide-article-tools #right-sidebar #article-tools-menu section:not(:first-child) p:before {
+  display: none;
+}
+.page-container.hide-article-tools #right-sidebar #article-tools-menu section:nth-last-child(2) {
+  border-bottom: 1px solid #EAECF0;
+}
+.page-container.hide-article-tools #right-sidebar #article-tools-menu section span {
+  padding: 5px 18px;
+}
+.page-container.hide-article-tools div.header.article-toolbar .tab-group#watch-tools {
+  height: 18px;
+  margin-right: 62px;
+}
+
+#left-sidebar #main-menu, #right-sidebar #article-tools-menu {
+  display: flex;
+  position: initial;
+  box-shadow: none;
+}
+
+#left-sidebar #main-menu {
+  width: 228px;
+  margin-left: 8px;
+}
+#left-sidebar #main-menu #pin-main-menu {
+  display: none;
+}
+#left-sidebar #main-menu #unpin-main-menu {
+  display: flex;
+}
+
+#right-sidebar {
+  position: relative;
+}
+#right-sidebar #article-tools-button {
+  position: absolute;
+  top: 75px;
+  left: -96px;
+  z-index: 1;
+  display: none;
+}
+#right-sidebar #article-tools-button.highlight {
+  animation-name: blueFlash;
+  animation-fill-mode: forwards;
+  animation-duration: 1.5s;
+}
+#right-sidebar #article-tools-button.article-tools-pinned {
+  display: none;
+}
+#right-sidebar #article-tools-menu.menu {
+  width: 140px;
+  margin: 61px 0 0 0;
+  border: none;
+  position: sticky;
+  top: 24px;
+  z-index: 1;
+}
+#right-sidebar #article-tools-menu.menu #article-tools-menu-heading {
+  display: block;
+}
+#right-sidebar #article-tools-menu.menu #article-tools-menu-heading span {
+  padding: 0;
+}
+#right-sidebar #article-tools-menu.menu section #pin-article-tools-menu {
+  display: none;
+}
+#right-sidebar #article-tools-menu.menu section #unpin-article-tools-menu {
+  display: flex;
+}
+#right-sidebar #article-tools-menu.menu section p {
+  padding: 0;
+}
+#right-sidebar #article-tools-menu.menu section:not(:first-child) p {
+  cursor: pointer;
+  display: flex;
+}
+#right-sidebar #article-tools-menu.menu section:not(:first-child) p:before {
+  content: url("/img/down.svg");
+  margin-right: 4px;
+  opacity: 0.75;
+  transition: all 100ms;
+}
+#right-sidebar #article-tools-menu.menu section:not(:first-child) p.closed:before {
+  transform: rotate(-90deg);
+}
+#right-sidebar #article-tools-menu.menu section:last-child {
+  border-bottom: none;
+}
+#right-sidebar #article-tools-menu.menu section span {
+  width: auto;
+  padding: 5px 0;
+}
+
+@media (max-width: 1200px) {
+  .page-container.hide-article-tools #right-sidebar #article-tools-button {
+    left: -58px;
+  }
+  .page-container.hide-article-tools #right-sidebar #article-tools-menu {
+    right: 8px;
+  }
+}
+@media (max-width: 1000px) {
+  .page-container #right-sidebar #article-tools-button {
+    display: flex;
+  }
+  .page-container #right-sidebar #article-tools-button.highlight {
+    animation-name: blueFlash;
+    animation-fill-mode: forwards;
+    animation-duration: 1.5s;
+  }
+  .page-container #right-sidebar #article-tools-menu {
+    width: max-content;
+    position: absolute;
+    top: 75px;
+    left: -185px;
+    border: 1px solid #cccccc;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+    margin: 0;
+    display: none;
+  }
+  .page-container #right-sidebar #article-tools-menu.show {
+    display: block;
+  }
+  .page-container #right-sidebar #article-tools-menu #article-tools-menu-heading {
+    display: none;
+  }
+  .page-container #right-sidebar #article-tools-menu #pin-article-tools-menu {
+    display: none;
+  }
+  .page-container #right-sidebar #article-tools-menu section p {
+    padding: 0 18px;
+  }
+  .page-container #right-sidebar #article-tools-menu section:not(:first-child) p:before {
+    content: "";
+  }
+  .page-container #right-sidebar #article-tools-menu section:nth-last-child(2) {
+    border-bottom: 1px solid #EAECF0;
+  }
+  .page-container #right-sidebar #article-tools-menu section span {
+    padding: 5px 18px;
+  }
+  .page-container div.header.article-toolbar .tab-group#watch-tools {
+    height: 18px;
+    margin-right: 60px;
+  }
+}
+
+/*# sourceMappingURL=sidebars.css.map */

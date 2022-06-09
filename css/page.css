@@ -1,0 +1,91 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  background-color: #fff;
+}
+body a {
+  color: #36c;
+}
+body a.visited {
+  color: #795cb2;
+}
+body button, body input {
+  font-size: 14px;
+}
+
+#outer-container {
+  position: relative;
+  min-width: 470px;
+  margin: 0 auto;
+}
+
+.page-container {
+  max-width: 1554px;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+  padding: 0 40px;
+}
+.page-container.no-toc, .page-container.hide-toc {
+  justify-content: center;
+}
+.page-container main.article-container {
+  max-width: 960px;
+  min-width: 0;
+  padding: 25px 45px 0 45px;
+}
+.page-container main.article-container .article-body {
+  min-height: 1500px;
+  border-right-width: 0;
+  border-left-width: 0;
+  border-bottom-width: 0;
+}
+.page-container main.article-container .article-body p#from-wikipedia {
+  margin: 0.75em 0 15px 0;
+  font-size: 13px;
+}
+.page-container main.article-container .article-body .mw-body.mw-body-content.content {
+  padding: 0.5em 0 1.5em 0;
+  margin: 0 0 0 0;
+  border: none;
+  overflow-x: hidden;
+  font-size: 16px;
+}
+.page-container main.article-container .article-body .mw-body.mw-body-content.content.font-14 {
+  font-size: 14px;
+}
+.page-container main.article-container .article-body .mw-body.mw-body-content.content a {
+  font-weight: normal;
+}
+
+#footer {
+  margin: 50px 0;
+  padding: 2em 0;
+  border-top: 1px solid #a2a9b1;
+}
+
+#advanced-tools-control {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: #eeeeee;
+  padding: 12px;
+}
+
+@media (max-width: 1200px) {
+  .page-container {
+    padding: 0 20px;
+  }
+  .page-container main.article-container {
+    padding: 25px 10px 0 10px;
+  }
+}
+@media (max-width: 720px) {
+  .outer-container {
+    padding: 0 15px;
+  }
+}
+
+/*# sourceMappingURL=page.css.map */
