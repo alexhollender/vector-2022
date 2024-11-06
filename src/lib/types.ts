@@ -1,16 +1,17 @@
-interface PageData {
+export type PageData = {
   content: string;
   tableOfContents: Section[];
-}
+};
 
-interface Section {
+export type Section = {
   anchor: string;
   line: string;
   toclevel: number;
   children?: Section[];
-}
+};
 
-interface SearchResult {
+export type SearchResult = {
+  index: number;
   pageid: number;
   title: string;
   description?: string;
@@ -19,9 +20,9 @@ interface SearchResult {
     width: number;
     height: number;
   };
-}
+};
 
-interface MenuState {
+export type MenuState = {
   mainMenu: {
     isPinned: boolean;
     isOpen: boolean;
@@ -42,6 +43,6 @@ interface MenuState {
     isPinned: boolean;
     isOpen: boolean;
   };
-}
+};
 
-type RouteType = "article" | "talk";
+export type RouteType = "article" | "talk";

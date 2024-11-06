@@ -4,11 +4,12 @@ import * as Api from "@/lib/api";
 import * as Context from "@/lib/context";
 import * as React from "react";
 import * as Utils from "@/lib/utils";
+import * as Types from "@/lib/types";
 
 export function usePageData(
   articleSlug: string,
   currentLanguage: string,
-  routeType: RouteType
+  routeType: Types.RouteType
 ) {
   const {
     setArticleSlug,
@@ -76,7 +77,7 @@ export function useWikiSearch(searchTerm: string) {
   React.useEffect(() => {
     async function performSearch() {
       try {
-        const results: SearchResult[] = await Api.searchWiki(
+        const results: Types.SearchResult[] = await Api.searchWiki(
           searchTerm,
           language
         );

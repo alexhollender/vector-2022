@@ -1,11 +1,12 @@
 import * as React from "react";
+import * as Types from "@/lib/types";
 import * as Context from "@/lib/context";
 import * as Ui from "@/ui";
 import * as Utils from "@/lib/utils";
 
 import Link from "next/link";
 
-type MenuName = keyof MenuState;
+type MenuName = keyof Types.MenuState;
 
 interface PinnableMenuProps {
   name: MenuName;
@@ -77,7 +78,7 @@ export function MenuHeader({
   menuName,
   title,
 }: {
-  menuName: keyof MenuState;
+  menuName: keyof Types.MenuState;
   title: string;
 }) {
   const { menuState, toggleMenuPin } = Context.useGlobalContext();

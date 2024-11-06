@@ -14,6 +14,7 @@ export default function SearchBox() {
     Context.useGlobalContext();
 
   const debouncedSearch = React.useCallback(
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     debounce((searchTerm: string) => {
       Api.searchWiki(searchTerm);
     }, 300),
@@ -27,7 +28,7 @@ export default function SearchBox() {
     setIsSearchResultsVisible(true);
   };
 
-  const handleBlur = (e: React.FocusEvent) => {
+  const handleBlur = () => {
     setTimeout(() => {
       setIsSearchResultsVisible(false);
     }, 10);

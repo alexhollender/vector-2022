@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import * as Types from "@/lib/types";
 
 interface GlobalContextType {
   // Content
@@ -10,30 +11,30 @@ interface GlobalContextType {
   setArticleTitle: (title: string) => void;
   articleContent: string;
   setArticleContent: (content: string) => void;
-  articleTableOfContents: Section[];
-  setArticleTableOfContents: (sections: Section[]) => void;
+  articleTableOfContents: Types.Section[];
+  setArticleTableOfContents: (sections: Types.Section[]) => void;
   talkContent: string;
   setTalkContent: (content: string) => void;
-  talkTableOfContents: Section[];
-  setTalkTableOfContents: (sections: Section[]) => void;
-  toggleMenuPin: (menuName: keyof MenuState) => void;
-  toggleMenuOpen: (menuName: keyof MenuState) => void;
+  talkTableOfContents: Types.Section[];
+  setTalkTableOfContents: (sections: Types.Section[]) => void;
+  toggleMenuPin: (menuName: keyof Types.MenuState) => void;
+  toggleMenuOpen: (menuName: keyof Types.MenuState) => void;
 
   // Route & Language
-  routeType: RouteType;
-  setRouteType: (type: RouteType) => void;
+  routeType: Types.RouteType;
+  setRouteType: (type: Types.RouteType) => void;
   language: string;
   setLanguage: (lang: string) => void;
 
   // Search
-  searchResults: SearchResult[];
-  setSearchResults: (results: SearchResult[]) => void;
+  searchResults: Types.SearchResult[];
+  setSearchResults: (results: Types.SearchResult[]) => void;
   isSearchResultsVisible: boolean;
   setIsSearchResultsVisible: (visible: boolean) => void;
 
   // Menu State
-  menuState: MenuState;
-  setMenuState: React.Dispatch<React.SetStateAction<MenuState>>;
+  menuState: Types.MenuState;
+  setMenuState: React.Dispatch<React.SetStateAction<Types.MenuState>>;
 }
 
 const GlobalContext = React.createContext<GlobalContextType | null>(null);
@@ -44,24 +45,26 @@ export function WikiProvider({ children }: { children: React.ReactNode }) {
   const [articleTitle, setArticleTitle] = React.useState("");
   const [articleContent, setArticleContent] = React.useState("");
   const [articleTableOfContents, setArticleTableOfContents] = React.useState<
-    Section[]
+    Types.Section[]
   >([]);
   const [talkContent, setTalkContent] = React.useState("");
   const [talkTableOfContents, setTalkTableOfContents] = React.useState<
-    Section[]
+    Types.Section[]
   >([]);
 
   // Route & Language State
-  const [routeType, setRouteType] = React.useState<RouteType>("article");
+  const [routeType, setRouteType] = React.useState<Types.RouteType>("article");
   const [language, setLanguage] = React.useState("en");
 
   // Search State
-  const [searchResults, setSearchResults] = React.useState<SearchResult[]>([]);
+  const [searchResults, setSearchResults] = React.useState<
+    Types.SearchResult[]
+  >([]);
   const [isSearchResultsVisible, setIsSearchResultsVisible] =
     React.useState(false);
 
   // Menu State
-  const [menuState, setMenuState] = React.useState<MenuState>({
+  const [menuState, setMenuState] = React.useState<Types.MenuState>({
     mainMenu: {
       isPinned: false,
       isOpen: false,
@@ -84,7 +87,7 @@ export function WikiProvider({ children }: { children: React.ReactNode }) {
     },
   });
 
-  const toggleMenuPin = React.useCallback((menuName: keyof MenuState) => {
+  const toggleMenuPin = React.useCallback((menuName: keyof Types.MenuState) => {
     setMenuState((prev) => ({
       ...prev,
       [menuName]: {
@@ -95,15 +98,18 @@ export function WikiProvider({ children }: { children: React.ReactNode }) {
     }));
   }, []);
 
-  const toggleMenuOpen = React.useCallback((menuName: keyof MenuState) => {
-    setMenuState((prev) => ({
-      ...prev,
-      [menuName]: {
-        ...prev[menuName],
-        isOpen: !prev[menuName].isOpen,
-      },
-    }));
-  }, []);
+  const toggleMenuOpen = React.useCallback(
+    (menuName: keyof Types.MenuState) => {
+      setMenuState((prev) => ({
+        ...prev,
+        [menuName]: {
+          ...prev[menuName],
+          isOpen: !prev[menuName].isOpen,
+        },
+      }));
+    },
+    []
+  );
 
   return (
     <GlobalContext.Provider

@@ -1,8 +1,10 @@
+import * as Types from "@/lib/types";
+
 export async function getPageContents(
   title: string,
   lang: string,
-  type: RouteType
-): Promise<PageData> {
+  type: Types.RouteType
+): Promise<Types.PageData> {
   const pageTitle = type === "talk" ? `Talk:${title}` : title;
 
   try {
@@ -53,7 +55,7 @@ export async function getPageContents(
 export async function searchWiki(
   searchTerm: string,
   lang: string = "en"
-): Promise<SearchResult[]> {
+): Promise<Types.SearchResult[]> {
   if (!searchTerm.trim()) return [];
 
   const url = `https://${lang}.wikipedia.org/w/api.php?${new URLSearchParams({
@@ -76,7 +78,7 @@ export async function searchWiki(
 
   if (!data.query?.pages) return [];
 
-  return Object.values(data.query.pages).sort(
-    (a: any, b: any) => a.index - b.index
-  ) as SearchResult[];
+  return (Object.values(data.query.pages) as Types.SearchResult[]).sort(
+    (a, b) => a.index - b.index
+  );
 }
