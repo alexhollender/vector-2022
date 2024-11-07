@@ -20,11 +20,13 @@ interface GlobalContextType {
   toggleMenuPin: (menuName: keyof Types.MenuState) => void;
   toggleMenuOpen: (menuName: keyof Types.MenuState) => void;
 
-  // Route & Language
+  // Route & URL params
   routeType: Types.RouteType;
   setRouteType: (type: Types.RouteType) => void;
   language: string;
   setLanguage: (lang: string) => void;
+  isLoggedIn: boolean;
+  setIsLoggedIn: (loggedIn: boolean) => void;
 
   // Search
   searchResults: Types.SearchResult[];
@@ -52,9 +54,15 @@ export function WikiProvider({ children }: { children: React.ReactNode }) {
     Types.Section[]
   >([]);
 
-  // Route & Language State
+  // Route & URL params
   const [routeType, setRouteType] = React.useState<Types.RouteType>("article");
   const [language, setLanguage] = React.useState("en");
+  const [isLoggedIn, setIsLoggedIn] = React.useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("isLoggedIn") === "true";
+    }
+    return false;
+  });
 
   // Search State
   const [searchResults, setSearchResults] = React.useState<
@@ -111,44 +119,66 @@ export function WikiProvider({ children }: { children: React.ReactNode }) {
     []
   );
 
+  React.useEffect(() => {
+    localStorage.setItem("isLoggedIn", String(isLoggedIn));
+  }, [isLoggedIn]);
+
+  const value = React.useMemo(
+    () => ({
+      // Content
+      articleSlug,
+      setArticleSlug,
+      articleTitle,
+      setArticleTitle,
+      articleContent,
+      setArticleContent,
+      articleTableOfContents,
+      setArticleTableOfContents,
+      talkContent,
+      setTalkContent,
+      talkTableOfContents,
+      setTalkTableOfContents,
+
+      // Route & URL params
+      routeType,
+      setRouteType,
+      language,
+      setLanguage,
+      isLoggedIn,
+      setIsLoggedIn,
+
+      // Search
+      searchResults,
+      setSearchResults,
+      isSearchResultsVisible,
+      setIsSearchResultsVisible,
+
+      // Menu State
+      menuState,
+      setMenuState,
+      toggleMenuPin,
+      toggleMenuOpen,
+    }),
+    [
+      articleSlug,
+      articleTitle,
+      articleContent,
+      articleTableOfContents,
+      talkContent,
+      talkTableOfContents,
+      routeType,
+      language,
+      isLoggedIn,
+      searchResults,
+      isSearchResultsVisible,
+      menuState,
+      toggleMenuPin,
+      toggleMenuOpen,
+    ]
+  );
+
   return (
-    <GlobalContext.Provider
-      value={{
-        // Content
-        articleSlug,
-        setArticleSlug,
-        articleTitle,
-        setArticleTitle,
-        articleContent,
-        setArticleContent,
-        articleTableOfContents,
-        setArticleTableOfContents,
-        talkContent,
-        setTalkContent,
-        talkTableOfContents,
-        setTalkTableOfContents,
-
-        // Route & Language
-        routeType,
-        setRouteType,
-        language,
-        setLanguage,
-
-        // Search
-        searchResults,
-        setSearchResults,
-        isSearchResultsVisible,
-        setIsSearchResultsVisible,
-
-        // Menu State
-        menuState,
-        setMenuState,
-        toggleMenuPin,
-        toggleMenuOpen,
-      }}
-    >
-      {children}
-    </GlobalContext.Provider>
+    <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
   );
 }
 

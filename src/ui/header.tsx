@@ -5,7 +5,7 @@ import * as Icons from "@/icons/icons";
 import Link from "next/link";
 
 export default function Header() {
-  const { menuState } = Context.useGlobalContext();
+  const { menuState, isLoggedIn, setIsLoggedIn } = Context.useGlobalContext();
 
   return (
     <header id="top" className="flex pt-2">
@@ -33,7 +33,16 @@ export default function Header() {
         <Ui.Buttons.IconButton icon={<Icons.Appearance />} />
         <Link href="/">Donate</Link>
         <Link href="/">Create account</Link>
-        <Link href="/">Log in</Link>
+        {!isLoggedIn && (
+          <button onClick={() => setIsLoggedIn(true)}>
+            <Link href="/">Log in</Link>
+          </button>
+        )}
+        {isLoggedIn && (
+          <button onClick={() => setIsLoggedIn(false)}>
+            <Link href="/">Log out</Link>
+          </button>
+        )}
         <Ui.Menus.PinnableMenu
           name="userMenu"
           left={true}
