@@ -45,30 +45,31 @@ export function PinnableMenu({
   }, [name, isPinned, isOpen, toggleMenuOpen, setMenuState]);
 
   return (
-    <div className={Utils.cx([className, { relative: !isPinned }])}>
-      <div ref={menuRef}>
-        {!isPinned &&
-          openCloseMenuButton &&
-          React.cloneElement(openCloseMenuButton, {
-            onClick: () => toggleMenuOpen(name),
-            "aria-expanded": isOpen,
-          })}
-        <div
-          className={Utils.cx([
-            "p-4 max-h-[85vh] overflow-hidden overflow-y-auto leading-[initial]",
-            className,
-            {
-              "w-max z-50 bg-white shadow-md rounded-sm border border-background-gray absolute":
-                !isPinned,
-              relative: isPinned,
-              hidden: !isPinned && !isOpen,
-              block: isPinned || isOpen,
-              "right-0": left === true,
-            },
-          ])}
-        >
-          {children}
-        </div>
+    <div
+      ref={menuRef}
+      className={Utils.cx([className, { relative: !isPinned }])}
+    >
+      {!isPinned &&
+        openCloseMenuButton &&
+        React.cloneElement(openCloseMenuButton, {
+          onClick: () => toggleMenuOpen(name),
+          "aria-expanded": isOpen,
+        })}
+      <div
+        className={Utils.cx([
+          "p-4 max-h-[85vh] overflow-hidden overflow-y-auto leading-[initial]",
+          className,
+          {
+            "w-max z-50 bg-white shadow-md rounded-sm border border-background-gray absolute":
+              !isPinned,
+            relative: isPinned,
+            hidden: !isPinned && !isOpen,
+            block: isPinned || isOpen,
+            "right-0": left === true,
+          },
+        ])}
+      >
+        {children}
       </div>
     </div>
   );

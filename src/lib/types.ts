@@ -10,6 +10,10 @@ export type Section = {
   children?: Section[];
 };
 
+export type ExpandedState = {
+  [key: string]: boolean;
+};
+
 export type SearchResult = {
   index: number;
   pageid: number;

@@ -1,3 +1,5 @@
+import * as Types from "@/lib/types";
+
 const addClass = (base: string, newClass: string) => {
   if (!newClass) return base;
   if (base === "") return newClass;
@@ -31,3 +33,31 @@ export function decodeSlug(encodedSlug: string): string {
 export function formatArticleTitle(slug: string): string {
   return slug.replace(/_/g, " ");
 }
+
+export const organizeHierarchy = (
+  flatSections: Types.Section[]
+): Types.Section[] => {
+  const result: Types.Section[] = [];
+  let currentParents: Types.Section[] = [];
+
+  flatSections.forEach((section) => {
+    const newSection = { ...section, children: [] };
+
+    while (
+      currentParents.length > 0 &&
+      currentParents[currentParents.length - 1].toclevel >= section.toclevel
+    ) {
+      currentParents.pop();
+    }
+
+    if (section.toclevel === 1) {
+      result.push(newSection);
+      currentParents = [newSection];
+    } else if (currentParents.length > 0) {
+      currentParents[currentParents.length - 1].children?.push(newSection);
+      currentParents.push(newSection);
+    }
+  });
+
+  return result;
+};

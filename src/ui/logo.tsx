@@ -7,7 +7,7 @@ import tagline from "../../public/images/tagline-en.svg";
 export default function Logo() {
   return (
     <Link
-      href="/Zebra"
+      href="/wiki/Zebra"
       className="flex gap-x-[10px] items-center ml-[14px] min-w-[180px]"
     >
       <Image src={globe} width={50} height={50} alt="Wikipedia Globe" />

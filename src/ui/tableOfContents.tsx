@@ -1,59 +1,25 @@
 import * as React from "react";
+import * as Types from "@/lib/types";
 import * as Context from "@/lib/context";
+import * as Hooks from "@/lib/hooks";
 import * as Utils from "@/lib/utils";
 import * as Ui from "@/ui";
 import * as Icons from "@/icons/icons";
-
-type Section = {
-  anchor: string;
-  line: string;
-  toclevel: number;
-  children?: Section[];
-};
-
-type ExpandedState = {
-  [key: string]: boolean;
-};
 
 export default function TableOfContents() {
   const { articleTableOfContents, talkTableOfContents, routeType } =
     Context.useGlobalContext();
 
-  const [expanded, setExpanded] = React.useState<ExpandedState>({});
+  const [expanded, setExpanded] = React.useState<Types.ExpandedState>({});
 
   const sections =
     routeType === "article" ? articleTableOfContents : talkTableOfContents;
 
-  const organizeHierarchy = (flatSections: Section[]): Section[] => {
-    const result: Section[] = [];
-    let currentParents: Section[] = [];
+  const { activeSection, isSectionActive } = Hooks.useActiveSection(sections);
 
-    flatSections.forEach((section) => {
-      const newSection = { ...section, children: [] };
-
-      while (
-        currentParents.length > 0 &&
-        currentParents[currentParents.length - 1].toclevel >= section.toclevel
-      ) {
-        currentParents.pop();
-      }
-
-      if (section.toclevel === 1) {
-        result.push(newSection);
-        currentParents = [newSection];
-      } else if (currentParents.length > 0) {
-        currentParents[currentParents.length - 1].children?.push(newSection);
-        currentParents.push(newSection);
-      }
-    });
-
-    return result;
-  };
-
-  // Initialize expanded state based on total section count
   React.useEffect(() => {
     const shouldExpandAll = sections.length <= 26;
-    const newExpanded: ExpandedState = {};
+    const newExpanded: Types.ExpandedState = {};
 
     sections.forEach((section) => {
       if (section.toclevel === 1) {
@@ -71,7 +37,7 @@ export default function TableOfContents() {
     }));
   };
 
-  const renderSection = (section: Section) => {
+  const renderSection = (section: Types.Section) => {
     const hasChildren = section.children && section.children.length > 0;
     const isExpanded = expanded[section.anchor];
     const isLevel1 = section.toclevel === 1;
@@ -100,7 +66,20 @@ export default function TableOfContents() {
               }
             />
           )}
-          <a href={`#${section.anchor}`}>
+          <a
+            href={`#${section.anchor}`}
+            className={Utils.cx([
+              "visited:text-progressive transition-colors duration-200",
+              {
+                "text-text-base visited:text-text-base font-bold":
+                  section.anchor === activeSection,
+                "text-text-base visited:text-text-base":
+                  Boolean(hasChildren) &&
+                  isSectionActive(section) &&
+                  section.anchor !== activeSection,
+              },
+            ])}
+          >
             <span>{section.line}</span>
           </a>
         </div>
@@ -115,7 +94,7 @@ export default function TableOfContents() {
 
   if (sections.length === 0) return null;
 
-  const hierarchicalSections = organizeHierarchy(sections);
+  const hierarchicalSections = Utils.organizeHierarchy(sections);
 
   return (
     <nav className="leading-[1.4]">
@@ -123,7 +102,13 @@ export default function TableOfContents() {
       <ul>
         <li className="p-1">
           <div>
-            <a href={`#top`}>
+            <a
+              href="#top"
+              className={Utils.cx([
+                "transition-colors duration-200 visited:text-progressive",
+                { "text-text-base font-bold": activeSection === "top" },
+              ])}
+            >
               <span>(Top)</span>
             </a>
           </div>

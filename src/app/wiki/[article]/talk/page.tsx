@@ -3,7 +3,7 @@
 import * as Hooks from "@/lib/hooks";
 import * as Utils from "@/lib/utils";
 import { useParams, useSearchParams } from "next/navigation";
-import TalkShow from "../../../views/talkShow";
+import TalkShow from "@/views/talkShow";
 
 export default function ArticlePage() {
   const params = useParams();

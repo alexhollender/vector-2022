@@ -31,7 +31,7 @@ export default function SearchBox() {
   const handleBlur = () => {
     setTimeout(() => {
       setIsSearchResultsVisible(false);
-    }, 10);
+    }, 200);
   };
 
   // Helper to check if results should be shown

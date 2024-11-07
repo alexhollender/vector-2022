@@ -1,17 +1,11 @@
-"use client";
+import { redirect } from "next/navigation";
 
-import * as Hooks from "@/lib/hooks";
-import * as Utils from "@/lib/utils";
-import { useParams, useSearchParams } from "next/navigation";
-import ArticleShow from "../../views/articleShow";
+interface Props {
+  params: {
+    article: string;
+  };
+}
 
-export default function ArticlePage() {
-  const params = useParams();
-  const articleSlug = Utils.decodeSlug(params.article as string);
-  const searchParams = useSearchParams();
-  const language = searchParams.get("lang") || "en";
-
-  Hooks.usePageData(articleSlug, language, "article");
-
-  return <ArticleShow />;
+export default function ArticleRedirect({ params: { article } }: Props) {
+  redirect(`/wiki/${article}`);
 }

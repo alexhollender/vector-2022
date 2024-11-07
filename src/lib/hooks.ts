@@ -91,3 +91,44 @@ export function useWikiSearch(searchTerm: string) {
     performSearch();
   }, [searchTerm, language, setSearchResults]);
 }
+
+export function useActiveSection(sections: Types.Section[]) {
+  const [activeSection, setActiveSection] = React.useState<string>("top");
+
+  React.useEffect(() => {
+    const getAnchors = (sections: Types.Section[]): string[] =>
+      sections.reduce(
+        (acc, section) => [
+          ...acc,
+          section.anchor,
+          ...(section.children ? getAnchors(section.children) : []),
+        ],
+        [] as string[]
+      );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
+        });
+      },
+      { rootMargin: "0px 0px -90% 0px", threshold: 0 }
+    );
+
+    ["top", ...getAnchors(sections)].forEach((anchor) => {
+      const element = document.getElementById(anchor);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [sections]);
+
+  const isSectionActive = React.useCallback(
+    (section: Types.Section): boolean =>
+      section.anchor === activeSection ||
+      (section.children?.some((child) => isSectionActive(child)) ?? false),
+    [activeSection]
+  );
+
+  return { activeSection, isSectionActive };
+}

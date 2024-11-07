@@ -8,8 +8,8 @@ export default function ArticleToolbar() {
     <header className="flex justify-between items-end mt-[7px] border-b border-background-disabled">
       <Ui.Buttons.Tabs
         tabs={[
-          { label: "Article", href: `/${articleSlug}` },
-          { label: "Talk", href: `/${articleSlug}/talk` },
+          { label: "Article", href: `/wiki/${articleSlug}` },
+          { label: "Talk", href: `/wiki/${articleSlug}/talk` },
         ]}
       />
       <div className="flex">
