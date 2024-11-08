@@ -28,8 +28,8 @@ export default function Header() {
         </div>
       </div>
       <div className="flex gap-x-2 items-center">
-        {!isLoggedIn && <Ui.UserMenu.UserMenuLoggedOut />}
-        {isLoggedIn && <Ui.UserMenu.UserMenuLoggedIn />}
+        {!isLoggedIn && <Ui.UserMenu.UserToolbarLoggedOut />}
+        {isLoggedIn && <Ui.UserMenu.UserToolbarLoggedIn />}
       </div>
     </header>
   );

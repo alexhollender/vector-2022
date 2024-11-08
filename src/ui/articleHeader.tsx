@@ -24,24 +24,7 @@ export default function ArticleHeader() {
         )}
         <h1 className="text-[28.8px]">{articleTitle}</h1>
       </div>
-      <Ui.Menus.PinnableMenu
-        name="languageMenu"
-        left={true}
-        openCloseMenuButton={
-          <Ui.Buttons.ButtonQuietProgressive
-            className="-mr-[12px]"
-            label="120 Languages"
-            icon={<Icons.Language color="#3366cc" />}
-            iconSecondary={
-              <span className="block w-3 h-3">
-                <Icons.Down color="#3366cc" />
-              </span>
-            }
-          />
-        }
-      >
-        <Ui.LanguageMenu />
-      </Ui.Menus.PinnableMenu>
+      <Ui.LanguageMenu />
     </header>
   );
 }

@@ -19,12 +19,10 @@ export default function ArticleToolbar() {
           <Ui.Menus.PinnableMenu
             name="toolsMenu"
             openCloseMenuButton={
-              <button className="flex items-center gap-x-1.5">
-                <span>Tools</span>
-                <span className="block w-3 h-3">
-                  <Icons.Down />
-                </span>
-              </button>
+              <Ui.Buttons.ButtonQuietNeutral
+                label="Tools"
+                iconSecondary={<Icons.Down />}
+              />
             }
             left={true}
             className="ml-3"

@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="px-6 medium:px-[44px] large:px-[52px] max-w-[99.75rem] bg-white mx-auto min-h-screen">
+        <div className="px-6 medium:px-[44px] large:px-[52px] max-w-[99.75rem] bg-background-base mx-auto min-h-screen">
           <Context.WikiProvider>{children}</Context.WikiProvider>
         </div>
       </body>

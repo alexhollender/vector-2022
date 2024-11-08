@@ -8,6 +8,7 @@ export default function ArticleShow() {
   return (
     <>
       <Ui.Header />
+      <Ui.StickyHeader />
       <Layout.Grid
         leftSidebar={<Ui.LeftSidebar />}
         rightSidebar={<Ui.RightSidebar />}

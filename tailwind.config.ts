@@ -22,6 +22,7 @@ const config: Config = {
         "progressive-hover": "var(--color-progressive-hover)",
         border: "var(--color-border)",
         "border-interactive": "var(--color-border-interactive)",
+        "border-subtle": "var(--color-border-subtle)",
         background: {
           subtle: "var(--color-background-subtle)",
           gray: "var(--color-background-gray)",

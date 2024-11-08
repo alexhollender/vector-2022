@@ -50,3 +50,9 @@ export type MenuState = {
 };
 
 export type RouteType = "article" | "talk";
+
+export type MenuItem = {
+  label: string;
+  icon?: React.ReactNode;
+  custom?: React.ReactNode;
+};

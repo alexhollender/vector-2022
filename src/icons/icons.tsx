@@ -219,3 +219,202 @@ export const User = ({ color = "var(--color-text-base)" }: IconProps) => {
     </svg>
   );
 };
+
+export const UserTalk = ({ color = "var(--color-text-base)" }: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 20 20"
+    >
+      <title>user talk</title>
+      <g fill={color}>
+        <path d="M18 0H2a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m-4 4a1.5 1.5 0 1 1-1.5 1.5A1.5 1.5 0 0 1 14 4M6 4a1.5 1.5 0 1 1-1.5 1.5A1.5 1.5 0 0 1 6 4m4 8c-2.61 0-4.83-.67-5.65-3h11.3c-.82 2.33-3.04 3-5.65 3" />
+      </g>
+    </svg>
+  );
+};
+
+export const Sandbox = ({ color = "var(--color-text-base)" }: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 20 20"
+    >
+      <title>sandbox</title>
+      <g fill={color}>
+        <path d="M8 12V9l6-6 3 3-6 6zm10-7-3-3 2-2 3 3zM8 2h2v2H8zM4 2h2v2H4zM0 3a1 1 0 0 1 1-1h1v2H0zm0 3h2v2H0zm0 4h2v2H0zm0 4h2v2H0zm0 4h2v2H1a1 1 0 0 1-1-1zm4 0h2v2H4zm4 0h2v2H8zm4 0h2v1a1 1 0 0 1-1 1h-1zm0-4h2v2h-2z" />
+      </g>
+    </svg>
+  );
+};
+
+export const Settings = ({ color = "var(--color-text-base)" }: IconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    width="100%"
+    height="100%"
+    fill={color}
+  >
+    <title>settings</title>
+    <path d="M8.5 0h3l1 6.5h-5m0 7h5l-1 6.5h-3" />
+    <path d="M8.5 0h3l1 6.5h-5m0 7h5l-1 6.5h-3" transform="rotate(45 10 10)" />
+    <path d="M8.5 0h3l1 6.5h-5m0 7h5l-1 6.5h-3" transform="rotate(90 10 10)" />
+    <path d="M8.5 0h3l1 6.5h-5m0 7h5l-1 6.5h-3" transform="rotate(135 10 10)" />
+    <path d="M10 2.5a7.5 7.5 0 0 0 0 15 7.5 7.5 0 0 0 0-15v4a3.5 3.5 0 0 1 0 7 3.5 3.5 0 0 1 0-7" />
+  </svg>
+);
+
+export const Beta = ({ color = "var(--color-text-base)" }: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 20 20"
+    >
+      <title>beta</title>
+      <g fill={color}>
+        <path d="M13 7.61V3h1V1H6v2h1v4.61l-5.86 9.88A1 1 0 0 0 2 19h16a1 1 0 0 0 .86-1.51zm-4.2.88a1 1 0 0 0 .2-.6V3h2v4.89a1 1 0 0 0 .14.51l2.14 3.6H6.72z" />
+      </g>
+    </svg>
+  );
+};
+
+export const Contributions = ({
+  color = "var(--color-text-base)",
+}: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 20 20"
+    >
+      <title>contributions</title>
+      <g fill={color}>
+        <circle cx="15.5" cy="10.5" r="2.5" />
+        <path d="M1 15h8v2H1Zm0-6h10v2H1Zm0-6h16v2H1Zm14.5 10.6c-3.3 0-4.5 1.6-4.5 2.7V18h9v-1.7c0-1-1.2-2.7-4.5-2.7" />
+      </g>
+    </svg>
+  );
+};
+
+export const Media = ({ color = "var(--color-text-base)" }: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 20 20"
+    >
+      <title>media</title>
+      <g fill={color}>
+        <path d="M3 5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2zm0 11 3.5-4.5 2.5 3 3.5-4.5 4.5 6zM16 2a2 2 0 012 2H2a2 2 0 012-2z" />
+      </g>
+    </svg>
+  );
+};
+
+export const Logout = ({ color = "var(--color-text-base)" }: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 20 20"
+    >
+      <title>log out</title>
+      <g fill={color}>
+        <path d="M3 3h8V1H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8v-2H3z" />
+        <path d="M13 5v4H5v2h8v4l6-5z" />
+      </g>
+    </svg>
+  );
+};
+
+export const Talk = ({ color = "var(--color-text-base)" }: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 20 20"
+    >
+      <title>talk</title>
+      <g fill={color}>
+        <path d="M17 4v7a2 2 0 0 1-2 2H4v1a2 2 0 0 0 2 2h10l4 4V6a2 2 0 0 0-2-2zM6 10H0v6z" />
+        <rect width="16" height="12" rx="2" />
+      </g>
+    </svg>
+  );
+};
+
+export const History = ({ color = "var(--color-text-base)" }: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 20 20"
+    >
+      <title>history</title>
+      <g fill={color}>
+        <path d="M9 6v5h.06l2.48 2.47 1.41-1.41L11 10.11V6z" />
+        <path d="M10 1a9 9 0 0 0-7.85 13.35L.5 16H6v-5.5l-2.38 2.38A7 7 0 1 1 10 17v2a9 9 0 0 0 0-18" />
+      </g>
+    </svg>
+  );
+};
+
+export const Watch = ({ color = "var(--color-text-base)" }: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 20 20"
+    >
+      <title>watch</title>
+      <g fill={color}>
+        <path d="M20 7h-7L10 .5 7 7H0l5.46 5.47-1.64 7 6.18-3.7 6.18 3.73-1.63-7zm-10 6.9-3.76 2.27 1-4.28L3.5 8.5h4.61L10 4.6l1.9 3.9h4.6l-3.73 3.4 1 4.28z" />
+      </g>
+    </svg>
+  );
+};
+
+export const Edit = ({ color = "var(--color-text-base)" }: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 20 20"
+    >
+      <title>edit</title>
+      <g fill={color}>
+        <path d="m16.77 8 1.94-2a1 1 0 0 0 0-1.41l-3.34-3.3a1 1 0 0 0-1.41 0L12 3.23zM1 14.25V19h4.75l9.96-9.96-4.75-4.75z" />
+      </g>
+    </svg>
+  );
+};
+
+export const Wikitext = ({ color = "var(--color-text-base)" }: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 20 20"
+    >
+      <title>wikitext</title>
+      <g fill={color}>
+        <path d="M1 3v14h3v-2H3V5h1V3zm4 0v14h4v-2H7V5h2V3zm11 0v2h1v10h-1v2h3V3zm-5 0v2h2v10h-2v2h4V3z" />
+      </g>
+    </svg>
+  );
+};

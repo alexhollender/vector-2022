@@ -60,7 +60,7 @@ export function PinnableMenu({
           "p-4 max-h-[85vh] overflow-hidden overflow-y-auto leading-[initial]",
           className,
           {
-            "w-max z-50 bg-white shadow-md rounded-sm border border-background-gray absolute":
+            "w-max z-50 bg-background-base shadow-md rounded-sm border border-background-gray absolute":
               !isPinned,
             relative: isPinned,
             hidden: !isPinned && !isOpen,
@@ -96,14 +96,9 @@ export function MenuHeader({
   );
 }
 
-interface MenuItem {
-  label: string;
-  icon?: React.ReactNode;
-}
-
 interface MenuSectionProps {
   heading?: string;
-  items: MenuItem[];
+  items: Types.MenuItem[];
 }
 
 export function MenuSection({ heading, items }: MenuSectionProps) {
@@ -118,13 +113,14 @@ export function MenuSection({ heading, items }: MenuSectionProps) {
         {items.map((item, index) => {
           return (
             <li key={index}>
-              <Link
-                href=""
-                className="flex items-center gap-x-1.5 py-1.5 text-progressive visited:text-progressive"
-              >
-                {item.icon && <div className="w-5 h-5">{item.icon}</div>}
-                {item.label}
-              </Link>
+              {!item.custom ? (
+                <div className="flex items-center gap-x-1.5 py-1.5 text-progressive hover:cursor-pointer hover:underline">
+                  {item.icon && <div className="w-5 h-5">{item.icon}</div>}
+                  {item.label}
+                </div>
+              ) : (
+                item.custom
+              )}
             </li>
           );
         })}
@@ -133,7 +129,7 @@ export function MenuSection({ heading, items }: MenuSectionProps) {
   );
 }
 
-interface MenuItemWithLink extends MenuItem {
+interface MenuItemWithLink extends Types.MenuItem {
   href: string;
 }
 

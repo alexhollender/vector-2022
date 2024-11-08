@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as Context from "@/lib/context";
-import * as Utils from "@/lib/utils";
 import Link from "next/link";
 
 const baseStyles = {
@@ -49,6 +48,33 @@ export function ButtonQuietProgressive({
   );
 }
 
+export function ButtonQuietNeutral({
+  label,
+  icon,
+  iconSecondary,
+  ...props
+}: ButtonProps) {
+  return (
+    <button
+      type="button"
+      {...props}
+      className={`
+        ${baseStyles.button}
+        ${baseStyles.padding.normal}
+        gap-x-1.5 text-text-base font-bold
+        hover:bg-background-subtle
+        ${props.className || ""}
+      `}
+    >
+      {icon && <div className={baseStyles.icon.normal}>{icon}</div>}
+      {label}
+      {iconSecondary && (
+        <div className={baseStyles.icon.small}>{iconSecondary}</div>
+      )}
+    </button>
+  );
+}
+
 export function ButtonNormalNeutral({
   label,
   icon,
@@ -64,7 +90,7 @@ export function ButtonNormalNeutral({
         ${baseStyles.padding.normal}
         justify-center font-bold
         border border-border bg-background-subtle
-        hover:bg-background-background-text-base
+        hover:bg-background-base
         ${props.className || ""}
       `}
     >

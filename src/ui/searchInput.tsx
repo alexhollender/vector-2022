@@ -1,25 +1,45 @@
 import * as React from "react";
 import * as Api from "@/lib/api";
-import * as Hooks from "@/lib/hooks";
+import * as Types from "@/lib/types";
 import * as Context from "@/lib/context";
 import * as Utils from "@/lib/utils";
+import * as Ui from "@/ui";
 import * as Icons from "@/icons/icons";
 
 import debounce from "lodash/debounce";
 
 export default function SearchBox() {
   const [value, setValue] = React.useState("");
-  const searchWiki = Hooks.useWikiSearch(value);
-  const { searchResults, isSearchResultsVisible, setIsSearchResultsVisible } =
-    Context.useGlobalContext();
+  const {
+    searchResults,
+    isSearchResultsVisible,
+    setIsSearchResultsVisible,
+    setSearchResults,
+    language,
+  } = Context.useGlobalContext();
 
-  const debouncedSearch = React.useCallback(
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    debounce((searchTerm: string) => {
-      Api.searchWiki(searchTerm);
-    }, 300),
-    [searchWiki]
+  const debouncedSearch = React.useMemo(
+    () =>
+      debounce(async (searchTerm: string) => {
+        try {
+          const results: Types.SearchResult[] = await Api.searchWiki(
+            searchTerm,
+            language
+          );
+          setSearchResults(results);
+        } catch (error) {
+          console.error("Search error:", error);
+          setSearchResults([]);
+        }
+      }, 100),
+    [language, setSearchResults]
   );
+
+  React.useEffect(() => {
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [debouncedSearch]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
@@ -34,7 +54,6 @@ export default function SearchBox() {
     }, 200);
   };
 
-  // Helper to check if results should be shown
   const showResults = searchResults.length > 0 && isSearchResultsVisible;
 
   return (
@@ -49,7 +68,7 @@ export default function SearchBox() {
     >
       <div
         className={Utils.cx([
-          "flex gap-x-2 grow relative bg-white border border-border shadow-[inset_0_0_0_1px_transparent] hover:border-border-interactive focus-within:border-progressive hover:focus-within:border-progressive transition-[background-color,color,border-color,box-shadow]",
+          "flex gap-x-2 grow relative bg-background-base border border-border shadow-[inset_0_0_0_1px_transparent] hover:border-border-interactive focus-within:border-progressive hover:focus-within:border-progressive transition-[background-color,color,border-color,box-shadow]",
           {
             "rounded-l-sm": !showResults,
             "rounded-tl-sm": showResults,
@@ -83,9 +102,10 @@ export default function SearchBox() {
         />
       </div>
       <div className="rounded-r-sm border-r border-y border-border">
-        <button className="bg-background-subtle inline-flex items-center justify-center gap-1 box-border min-h-[32px] max-w-7xl m-0 px-3 font-inherit text-inherit font-bold truncate whitespace-nowrap normal-case transition-colors duration-100">
-          Search
-        </button>
+        <Ui.Buttons.ButtonNormalNeutral
+          label="Search"
+          className="border-none"
+        />
       </div>
     </div>
   );
