@@ -2,10 +2,8 @@ import * as Context from "@/lib/context";
 import * as Ui from "@/ui";
 import * as Icons from "@/icons/icons";
 
-import Link from "next/link";
-
 export default function Header() {
-  const { menuState, isLoggedIn, setIsLoggedIn } = Context.useGlobalContext();
+  const { menuState, isLoggedIn } = Context.useGlobalContext();
 
   return (
     <header id="top" className="flex pt-2">
@@ -30,28 +28,8 @@ export default function Header() {
         </div>
       </div>
       <div className="flex gap-x-2 items-center">
-        <Ui.Buttons.IconButton icon={<Icons.Appearance />} />
-        <Link href="/">Donate</Link>
-        <Link href="/">Create account</Link>
-        {!isLoggedIn && (
-          <button onClick={() => setIsLoggedIn(true)}>
-            <Link href="/">Log in</Link>
-          </button>
-        )}
-        {isLoggedIn && (
-          <button onClick={() => setIsLoggedIn(false)}>
-            <Link href="/">Log out</Link>
-          </button>
-        )}
-        <Ui.Menus.PinnableMenu
-          name="userMenu"
-          left={true}
-          openCloseMenuButton={
-            <Ui.Buttons.IconButton className="-mr-1.5" icon={<Icons.Dots />} />
-          }
-        >
-          <Ui.UserMenu />
-        </Ui.Menus.PinnableMenu>
+        {!isLoggedIn && <Ui.UserMenu.UserMenuLoggedOut />}
+        {isLoggedIn && <Ui.UserMenu.UserMenuLoggedIn />}
       </div>
     </header>
   );

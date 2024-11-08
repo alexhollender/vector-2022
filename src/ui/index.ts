@@ -1,5 +1,6 @@
 export * as Buttons from "./buttons";
 export * as Menus from "./menus";
+export * as UserMenu from "./userMenu";
 
 export { default as ArticleHeader } from "./articleHeader";
 export { default as ArticleToolbar } from "./articleToolbar";
@@ -13,5 +14,4 @@ export { default as RightSidebar } from "./rightSidebar";
 export { default as TableOfContents } from "./tableOfContents";
 export { default as MainMenu } from "./mainMenu";
 export { default as ToolsMenu } from "./toolsMenu";
-export { default as UserMenu } from "./userMenu";
 export { default as LanguageMenu } from "./languageMenu";

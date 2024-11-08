@@ -57,12 +57,20 @@ export function WikiProvider({ children }: { children: React.ReactNode }) {
   // Route & URL params
   const [routeType, setRouteType] = React.useState<Types.RouteType>("article");
   const [language, setLanguage] = React.useState("en");
-  const [isLoggedIn, setIsLoggedIn] = React.useState(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("isLoggedIn") === "true";
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  const [isInitialized, setIsInitialized] = React.useState(false);
+
+  React.useEffect(() => {
+    const stored = localStorage.getItem("isLoggedIn") === "true";
+    setIsLoggedIn(stored);
+    setIsInitialized(true);
+  }, []);
+
+  React.useEffect(() => {
+    if (isInitialized) {
+      localStorage.setItem("isLoggedIn", String(isLoggedIn));
     }
-    return false;
-  });
+  }, [isLoggedIn, isInitialized]);
 
   // Search State
   const [searchResults, setSearchResults] = React.useState<
@@ -118,10 +126,6 @@ export function WikiProvider({ children }: { children: React.ReactNode }) {
     },
     []
   );
-
-  React.useEffect(() => {
-    localStorage.setItem("isLoggedIn", String(isLoggedIn));
-  }, [isLoggedIn]);
 
   const value = React.useMemo(
     () => ({

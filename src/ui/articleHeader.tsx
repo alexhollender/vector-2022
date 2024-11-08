@@ -33,8 +33,8 @@ export default function ArticleHeader() {
             label="120 Languages"
             icon={<Icons.Language color="#3366cc" />}
             iconSecondary={
-              <span className="h-6 rotate-90 -translate-x-1.5 inline-block origin-right">
-                <Icons.ExpandCollapseTocSection color="#3366cc" />
+              <span className="block w-3 h-3">
+                <Icons.Down color="#3366cc" />
               </span>
             }
           />

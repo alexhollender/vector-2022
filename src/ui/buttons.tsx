@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as Context from "@/lib/context";
+import * as Utils from "@/lib/utils";
 import Link from "next/link";
 
 const baseStyles = {
@@ -97,6 +98,7 @@ export function SmallButton({ label, ...props }: ButtonProps) {
 interface IconButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon: React.ReactNode;
+  iconSecondary?: React.ReactNode;
 }
 
 export function SmallIconButton({ icon, ...props }: IconButtonProps) {
@@ -116,19 +118,22 @@ export function SmallIconButton({ icon, ...props }: IconButtonProps) {
   );
 }
 
-export function IconButton({ icon, ...props }: IconButtonProps) {
+export function IconButton({ icon, iconSecondary, ...props }: IconButtonProps) {
   return (
     <button
       type="button"
       {...props}
       className={`
         ${baseStyles.button}
-        w-8 h-8 p-1.5
+        p-1.5 gap-x-1.5
         hover:bg-background-subtle
         ${props.className || ""}
       `}
     >
-      {icon}
+      <div className={baseStyles.icon.normal}>{icon}</div>
+      {iconSecondary && (
+        <div className={baseStyles.icon.small}>{iconSecondary}</div>
+      )}
     </button>
   );
 }

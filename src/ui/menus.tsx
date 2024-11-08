@@ -96,9 +96,14 @@ export function MenuHeader({
   );
 }
 
+interface MenuItem {
+  label: string;
+  icon?: React.ReactNode;
+}
+
 interface MenuSectionProps {
   heading?: string;
-  items: string[];
+  items: MenuItem[];
 }
 
 export function MenuSection({ heading, items }: MenuSectionProps) {
@@ -115,9 +120,10 @@ export function MenuSection({ heading, items }: MenuSectionProps) {
             <li key={index}>
               <Link
                 href=""
-                className="py-1.5 block text-progressive visited:text-progressive"
+                className="flex items-center gap-x-1.5 py-1.5 text-progressive visited:text-progressive"
               >
-                {item}
+                {item.icon && <div className="w-5 h-5">{item.icon}</div>}
+                {item.label}
               </Link>
             </li>
           );
@@ -127,13 +133,12 @@ export function MenuSection({ heading, items }: MenuSectionProps) {
   );
 }
 
-interface MenuItem {
-  label: string;
+interface MenuItemWithLink extends MenuItem {
   href: string;
 }
 
 interface MenuColumnProps {
-  items: MenuItem[];
+  items: MenuItemWithLink[];
   columnIndex: number;
 }
 
@@ -145,7 +150,7 @@ const MenuColumn = ({ items, columnIndex }: MenuColumnProps) => {
           <li key={`col${columnIndex}-${index}`}>
             <Link
               href={item.href}
-              className="py-2 block text-blue-600 visited:text-blue-600"
+              className="py-2 block text-progressive visited:text-progressive"
             >
               {item.label}
             </Link>
@@ -158,10 +163,10 @@ const MenuColumn = ({ items, columnIndex }: MenuColumnProps) => {
 
 interface MenuSectionColumnsProps {
   heading?: string;
-  column1Items: MenuItem[];
-  column2Items?: MenuItem[];
-  column3Items?: MenuItem[];
-  column4Items?: MenuItem[];
+  column1Items: MenuItemWithLink[];
+  column2Items?: MenuItemWithLink[];
+  column3Items?: MenuItemWithLink[];
+  column4Items?: MenuItemWithLink[];
 }
 
 export const MenuSectionColumns = ({

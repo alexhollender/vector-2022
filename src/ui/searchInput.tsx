@@ -74,7 +74,7 @@ export default function SearchBox() {
           onBlur={handleBlur}
           placeholder="Search Wikipedia..."
           className={Utils.cx([
-            "w-full py-1 pr-2 placeholder:text-border-interactive focus:ring-1 focus:outline-none focus:ring-inset focus:ring-blue-500",
+            "w-full py-1 pr-2 placeholder:text-border-interactive focus:ring-1 focus:outline-none focus:ring-inset focus:ring-progressive",
             {
               "pl-9": !showResults,
               "pl-[60px]": showResults,

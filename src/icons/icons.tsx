@@ -1,4 +1,10 @@
-export const ExpandCollapseTocSection = ({ color = "black" }) => {
+interface IconProps {
+  color?: string;
+}
+
+export const ExpandCollapseTocSection = ({
+  color = "var(--color-text-base)",
+}: IconProps) => {
   return (
     <svg
       width="100%"
@@ -14,7 +20,23 @@ export const ExpandCollapseTocSection = ({ color = "black" }) => {
   );
 };
 
-export const Dots = ({ color = "black" }) => {
+export const Down = ({ color = "var(--color-text-base)" }: IconProps) => {
+  return (
+    <svg
+      width="100%"
+      height="100%"
+      viewBox="0 0 12 12"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="m11.05 3.996-.965-1.053-4.035 3.86-3.947-3.86L1.05 3.996l5 5z"
+        fill={color}
+      />
+    </svg>
+  );
+};
+
+export const Dots = ({ color = "var(--color-text-base)" }: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +54,7 @@ export const Dots = ({ color = "black" }) => {
   );
 };
 
-export const Contents = ({ color = "black" }) => {
+export const Contents = ({ color = "var(--color-text-base)" }: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +73,7 @@ export const Contents = ({ color = "black" }) => {
   );
 };
 
-export const Menu = ({ color = "black" }) => {
+export const Menu = ({ color = "var(--color-text-base)" }: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +89,7 @@ export const Menu = ({ color = "black" }) => {
   );
 };
 
-export const Language = ({ color = "black" }) => {
+export const Language = ({ color = "var(--color-text-base)" }: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +105,7 @@ export const Language = ({ color = "black" }) => {
   );
 };
 
-export const Appearance = ({ color = "black" }) => {
+export const Appearance = ({ color = "var(--color-text-base)" }: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +121,7 @@ export const Appearance = ({ color = "black" }) => {
   );
 };
 
-export const Search = ({ color = "black" }) => {
+export const Search = ({ color = "var(--color-text-base)" }: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -115,11 +137,11 @@ export const Search = ({ color = "black" }) => {
   );
 };
 
-export const Image = ({ color = "black" }) => {
+export const Image = ({ color = "var(--color-text-base)" }: IconProps) => {
   return (
     <svg
-      width="20"
-      height="20"
+      width="100%"
+      height="100%"
       viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -129,6 +151,71 @@ export const Image = ({ color = "black" }) => {
         d="M18 2H2C0.89543 2 0 2.89543 0 4V16C0 17.1046 0.89543 18 2 18H18C19.1046 18 20 17.1046 20 16V4C20 2.89543 19.1046 2 18 2ZM1.83 15L5.92 9.75L8.84 13.26L12.92 8L18.17 15H1.83Z"
         fill={color}
       />
+    </svg>
+  );
+};
+
+export const Bell = ({ color = "var(--color-text-base)" }: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 20 20"
+    >
+      <title>bell</title>
+      <g fill={color}>
+        <path d="M16 7a5.38 5.38 0 0 0-4.46-4.85C11.6 1.46 11.53 0 10 0S8.4 1.46 8.46 2.15A5.38 5.38 0 0 0 4 7v6l-2 2v1h16v-1l-2-2zm-6 13a3 3 0 0 0 3-3H7a3 3 0 0 0 3 3" />
+      </g>
+    </svg>
+  );
+};
+
+export const Inbox = ({ color = "var(--color-text-base)" }: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 20 20"
+    >
+      <title>inbox</title>
+      <g fill={color}>
+        <path d="M3 1a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm14 12h-4l-1 2H8l-1-2H3V3h14z" />
+      </g>
+    </svg>
+  );
+};
+
+export const Watchlist = ({ color = "var(--color-text-base)" }: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 20 20"
+    >
+      <title>watchlist</title>
+      <g fill={color}>
+        <path d="M1 3h16v2H1Zm0 6h6v2H1Zm0 6h8v2H1Zm8-4.24h3.85L14.5 7l1.65 3.76H20l-3 3.17.9 4.05-3.4-2.14L11.1 18l.9-4.05Z" />
+      </g>
+    </svg>
+  );
+};
+
+export const User = ({ color = "var(--color-text-base)" }: IconProps) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="100%"
+      height="100%"
+      viewBox="0 0 20 20"
+    >
+      <title>user</title>
+      <g fill={color}>
+        <path d="M10 11c-5.92 0-8 3-8 5v3h16v-3c0-2-2.08-5-8-5" />
+        <circle cx="10" cy="5.5" r="4.5" />
+      </g>
     </svg>
   );
 };
