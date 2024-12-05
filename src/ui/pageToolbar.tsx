@@ -3,10 +3,10 @@ import * as Ui from "@/ui";
 import * as Icons from "@/icons/icons";
 
 export default function PageToolbar() {
-  const { articleSlug, menuState } = Context.useGlobalContext();
+  const { articleSlug, menuState, isLoggedIn } = Context.useGlobalContext();
 
   return (
-    <header className="flex justify-between items-end mt-1 border-b border-background-disabled">
+    <header className="flex justify-between items-end h-9 mt-[1px] border-b border-background-disabled">
       <Ui.Buttons.Tabs
         tabs={[
           { label: "Article", href: `/wiki/${articleSlug}` },
@@ -14,7 +14,14 @@ export default function PageToolbar() {
         ]}
       />
       <div className="flex items-baseline">
-        <Ui.Buttons.Tabs tabs={["Read", "Edit", "View History"]} />
+        <Ui.Buttons.Tabs
+          tabs={[
+            "Read",
+            "Edit",
+            ...(isLoggedIn ? ["Edit source"] : []),
+            "View History",
+          ]}
+        />
         {!menuState.toolsMenu.isPinned && (
           <Ui.Menus.PinnableMenu
             name="toolsMenu"

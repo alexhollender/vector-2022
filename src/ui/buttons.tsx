@@ -192,7 +192,7 @@ export const Tabs = ({ tabs }: TabsProps) => {
           key={tab.label}
           href={tab.href}
           className={`
-            pb-1 -mb-[1px] whitespace-nowrap
+            pb-[3px] -mb-[1px] whitespace-nowrap
             no-underline hover:no-underline
             ${
               selectedTab.label === tab.label

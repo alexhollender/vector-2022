@@ -29,6 +29,7 @@ export default function StickyHeader() {
         <Ui.Buttons.IconButton icon={<Icons.Talk />} />
         <Ui.Buttons.IconButton icon={<Icons.History />} />
         <Ui.Buttons.IconButton icon={<Icons.Watch />} />
+        <Ui.Buttons.IconButton icon={<Icons.Edit />} />
         <Ui.Buttons.IconButton icon={<Icons.Wikitext />} />
         <Ui.Buttons.ButtonQuietNeutral
           icon={<Icons.Language />}

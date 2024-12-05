@@ -43,7 +43,7 @@ export default function TableOfContents() {
     const isLevel1 = section.toclevel === 1;
 
     return (
-      <li key={section.anchor} className="py-[6px] last-of-type:pb-0">
+      <li key={section.anchor}>
         <div
           className={Utils.cx([
             "flex items-center",
@@ -69,7 +69,7 @@ export default function TableOfContents() {
           <a
             href={`#${section.anchor}`}
             className={Utils.cx([
-              "visited:text-progressive transition-colors duration-200",
+              "visited:text-progressive transition-colors duration-200 py-[6px]",
               {
                 "text-text-base visited:text-text-base font-bold":
                   section.anchor === activeSection,
