@@ -2,12 +2,12 @@ import * as Context from "@/lib/context";
 import * as Ui from "@/ui";
 import * as Icons from "@/icons/icons";
 
-export default function ArticleHeader() {
+export default function PageHeader() {
   const { articleTitle, menuState } = Context.useGlobalContext();
 
   return (
-    <header className="flex justify-between items-end border-b border-border">
-      <div className="flex items-center gap-x-2">
+    <header className="flex items-center border-b border-border">
+      <div className="flex items-center gap-x-2 grow">
         {!menuState.tableOfContents.isPinned && (
           <Ui.Menus.PinnableMenu
             name="tableOfContents"

@@ -55,4 +55,5 @@ export type MenuItem = {
   label: string;
   icon?: React.ReactNode;
   custom?: React.ReactNode;
+  onClick?: () => void;
 };

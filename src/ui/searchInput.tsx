@@ -10,6 +10,7 @@ import debounce from "lodash/debounce";
 
 export default function SearchBox() {
   const [value, setValue] = React.useState("");
+  const [isFocused, setIsFocused] = React.useState(false);
   const {
     searchResults,
     isSearchResultsVisible,
@@ -48,7 +49,12 @@ export default function SearchBox() {
     setIsSearchResultsVisible(true);
   };
 
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
   const handleBlur = () => {
+    setIsFocused(false);
     setTimeout(() => {
       setIsSearchResultsVisible(false);
     }, 200);
@@ -84,14 +90,21 @@ export default function SearchBox() {
             },
           ])}
         >
-          <Icons.Search color="var(--color-border-interactive)" />
+          <Icons.Search
+            color={
+              isFocused
+                ? "var(--color-text-base)"
+                : "var(--color-border-interactive)"
+            }
+          />
         </span>
         <input
           type="search"
           value={value}
           onChange={handleChange}
+          onFocus={handleFocus}
           onBlur={handleBlur}
-          placeholder="Search Wikipedia..."
+          placeholder="Search Wikipedia"
           className={Utils.cx([
             "w-full py-1 pr-2 placeholder:text-border-interactive focus:ring-1 focus:outline-none focus:ring-inset focus:ring-progressive",
             {

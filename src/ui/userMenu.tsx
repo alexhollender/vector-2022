@@ -65,17 +65,8 @@ export function UserMenuLoggedIn() {
     { label: "Uploaded media", icon: <Icons.Media /> },
     {
       label: "Log out",
-      custom: (
-        <button
-          onClick={() => setIsLoggedIn(false)}
-          className="flex items-center gap-x-1.5 py-1.5 text-progressive hover:cursor-pointer hover:underline"
-        >
-          <div className="w-5 h-5">
-            <Icons.Logout />
-          </div>
-          Log out
-        </button>
-      ),
+      icon: <Icons.Logout />,
+      onClick: () => setIsLoggedIn(false),
     },
   ];
 

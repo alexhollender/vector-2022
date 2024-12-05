@@ -186,13 +186,13 @@ export const Tabs = ({ tabs }: TabsProps) => {
     ) || normalizedTabs[0];
 
   return (
-    <div className="flex gap-x-3">
+    <div className="flex gap-x-4">
       {normalizedTabs.map((tab) => (
         <Link
           key={tab.label}
           href={tab.href}
           className={`
-            pb-1.5 -mb-[1px] whitespace-nowrap
+            pb-1 -mb-[1px] whitespace-nowrap
             no-underline hover:no-underline
             ${
               selectedTab.label === tab.label

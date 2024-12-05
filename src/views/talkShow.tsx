@@ -12,9 +12,9 @@ export default function ArticleShow() {
         leftSidebar={<Ui.LeftSidebar />}
         rightSidebar={<Ui.RightSidebar />}
       >
-        <Ui.ArticleHeader />
-        <Ui.ArticleToolbar />
-        <Ui.ArticleMetadata />
+        <Ui.PageHeader />
+        <Ui.PageToolbar />
+        <Ui.PageMetadata />
         {/* Talk page content */}
         <div
           className="mw-body mw-body-content mt-4"

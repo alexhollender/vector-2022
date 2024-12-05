@@ -23,26 +23,25 @@ export function PinnableMenu({
   children,
   left,
 }: PinnableMenuProps) {
-  const { menuState, setMenuState, toggleMenuOpen } =
-    Context.useGlobalContext();
+  const { menuState, toggleMenuOpen } = Context.useGlobalContext();
   const { isPinned, isOpen } = menuState[name];
   const menuRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        !isPinned &&
-        isOpen &&
-        menuRef.current &&
-        !menuRef.current.contains(event.target as Node)
-      ) {
-        toggleMenuOpen(name);
-      }
+    const handleClick = (event: MouseEvent) => {
+      if (isPinned || !isOpen) return;
+
+      const target = event.target as Node;
+      const menuEl = menuRef.current;
+
+      if (menuEl?.contains(target)) return;
+
+      toggleMenuOpen(name);
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [name, isPinned, isOpen, toggleMenuOpen, setMenuState]);
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, [name, isPinned, isOpen, toggleMenuOpen]);
 
   return (
     <div
@@ -112,7 +111,7 @@ export function MenuSection({ heading, items }: MenuSectionProps) {
       <ul>
         {items.map((item, index) => {
           return (
-            <li key={index}>
+            <li key={index} onClick={item.onClick}>
               {!item.custom ? (
                 <div className="flex items-center gap-x-1.5 py-1.5 text-progressive hover:cursor-pointer hover:underline">
                   {item.icon && <div className="w-5 h-5">{item.icon}</div>}

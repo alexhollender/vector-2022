@@ -43,7 +43,7 @@ export default function TableOfContents() {
     const isLevel1 = section.toclevel === 1;
 
     return (
-      <li key={section.anchor} className="py-1 last-of-type:pb-0">
+      <li key={section.anchor} className="py-[6px] last-of-type:pb-0">
         <div
           className={Utils.cx([
             "flex items-center",
@@ -97,10 +97,10 @@ export default function TableOfContents() {
   const hierarchicalSections = Utils.organizeHierarchy(sections);
 
   return (
-    <nav className="leading-[1.4]">
+    <nav className="leading-[1.2]">
       <Ui.Menus.MenuHeader menuName="tableOfContents" title="Contents" />
       <ul>
-        <li className="p-1">
+        <li className="py-[6px]">
           <div>
             <a
               href="#top"

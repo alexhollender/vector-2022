@@ -7,22 +7,24 @@ export default function Header() {
 
   return (
     <header id="top" className="flex pt-2">
-      <div className="flex grow items-center">
-        {!menuState.mainMenu.isPinned && (
-          <Ui.Menus.PinnableMenu
-            name="mainMenu"
-            openCloseMenuButton={
-              <Ui.Buttons.IconButton
-                className="-ml-1.5"
-                icon={<Icons.Menu />}
-              />
-            }
-          >
-            <Ui.MainMenu />
-          </Ui.Menus.PinnableMenu>
-        )}
-        <Ui.Logo />
-        <div className="relative ml-4 grow max-w-[500px]">
+      <div className="flex grow items-center gap-x-7">
+        <div className="flex items-center gap-x-[14px]">
+          {!menuState.mainMenu.isPinned && (
+            <Ui.Menus.PinnableMenu
+              name="mainMenu"
+              openCloseMenuButton={
+                <Ui.Buttons.IconButton
+                  className="-ml-1.5"
+                  icon={<Icons.Menu />}
+                />
+              }
+            >
+              <Ui.MainMenu />
+            </Ui.Menus.PinnableMenu>
+          )}
+          <Ui.Logo />
+        </div>
+        <div className="relative grow max-w-[500px]">
           <Ui.SearchInput />
           <Ui.SearchResults />
         </div>

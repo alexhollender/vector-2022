@@ -3891,10 +3891,6 @@ figure[typeof~="mw:File/Thumb"] > figcaption:empty {
     border-radius: 0;
   }
 
-  a:visited {
-    color: var(--color-visited, #6a60b0);
-  }
-
   /* a:visited:hover {
     color: var(--color-visited, #6a60b0);
   } */
@@ -3911,6 +3907,10 @@ figure[typeof~="mw:File/Thumb"] > figcaption:empty {
 
   a:focus-visible {
     outline: solid 2px var(--outline-color-progressive--focus, #36c);
+  }
+
+  a:visited {
+    color: var(--color-visited, #6a60b0);
   }
 
   @supports not selector(:focus-visible) {
