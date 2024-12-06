@@ -11,7 +11,7 @@ export default function PageHeader() {
         {!menuState.tableOfContents.isPinned && (
           <Ui.Menus.PinnableMenu
             name="tableOfContents"
-            className="-translate-x-2 max-w-xs"
+            containerClassName="-translate-x-2 max-w-xs"
             openCloseMenuButton={
               <Ui.Buttons.IconButton
                 className="-mr-1.5"

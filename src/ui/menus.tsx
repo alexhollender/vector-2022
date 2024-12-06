@@ -10,7 +10,8 @@ type MenuName = keyof Types.MenuState;
 
 interface PinnableMenuProps {
   name: MenuName;
-  className?: string;
+  containerClassName?: string;
+  menuClassName?: string;
   openCloseMenuButton?: React.ReactElement;
   children: React.ReactNode;
   left?: boolean;
@@ -18,7 +19,8 @@ interface PinnableMenuProps {
 
 export function PinnableMenu({
   name,
-  className,
+  containerClassName,
+  menuClassName,
   openCloseMenuButton,
   children,
   left,
@@ -46,7 +48,7 @@ export function PinnableMenu({
   return (
     <div
       ref={menuRef}
-      className={Utils.cx([className, { relative: !isPinned }])}
+      className={Utils.cx([containerClassName, { relative: !isPinned }])}
     >
       {!isPinned &&
         openCloseMenuButton &&
@@ -57,7 +59,7 @@ export function PinnableMenu({
       <div
         className={Utils.cx([
           "p-4 max-h-[85vh] overflow-hidden overflow-y-auto leading-[initial]",
-          className,
+          menuClassName,
           {
             "w-max z-50 bg-background-base shadow-md rounded-sm border border-background-gray absolute":
               !isPinned,

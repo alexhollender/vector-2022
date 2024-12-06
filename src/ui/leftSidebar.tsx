@@ -15,7 +15,7 @@ export default function LeftSidebar() {
       {menuState.tableOfContents.isPinned && (
         <Ui.Menus.PinnableMenu
           name="tableOfContents"
-          className={Utils.cx([
+          containerClassName={Utils.cx([
             "sticky",
             {
               "top-4": !isLoggedIn,

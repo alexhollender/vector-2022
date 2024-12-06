@@ -1,5 +1,6 @@
 import * as Context from "@/lib/context";
 import * as Ui from "@/ui";
+import * as Utils from "@/lib/utils";
 import * as Icons from "@/icons/icons";
 
 export default function PageToolbar() {
@@ -22,9 +23,23 @@ export default function PageToolbar() {
             "View History",
           ]}
         />
+        {isLoggedIn && (
+          <Ui.Buttons.IconButton
+            icon={<Icons.Watch />}
+            className="ml-2.5 scale-90 self-center"
+          />
+        )}
         {!menuState.toolsMenu.isPinned && (
           <Ui.Menus.PinnableMenu
             name="toolsMenu"
+            left={true}
+            containerClassName={Utils.cx([
+              {
+                "ml-1.5": !isLoggedIn,
+                "ml-0": isLoggedIn,
+              },
+            ])}
+            menuClassName="-mr-3"
             openCloseMenuButton={
               <Ui.Buttons.ButtonQuietNeutral
                 className="-mr-3 font-normal"
@@ -32,8 +47,6 @@ export default function PageToolbar() {
                 iconSecondary={<Icons.Down />}
               />
             }
-            left={true}
-            className="ml-1.5"
           >
             <Ui.ToolsMenu />
           </Ui.Menus.PinnableMenu>

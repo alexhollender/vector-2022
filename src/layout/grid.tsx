@@ -49,7 +49,7 @@ export default function Grid({
       ])}
     >
       {showLeftColumn && (
-        <div className="hidden medium:block">{leftSidebar}</div>
+        <div className="hidden medium:block -ml-[6px]">{leftSidebar}</div>
       )}
       <div
         className={Utils.cx([
