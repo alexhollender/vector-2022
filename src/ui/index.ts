@@ -16,3 +16,4 @@ export { default as PageToolbar } from "./pageToolbar";
 export { default as ToolsMenu } from "./toolsMenu";
 export { default as PageMetadata } from "./pageMetadata";
 export { default as RightSidebar } from "./rightSidebar";
+export { default as Footer } from "./footer";

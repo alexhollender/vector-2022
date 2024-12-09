@@ -20,7 +20,7 @@ export default function PageHeader() {
             containerClassName={Utils.cx([
               { "-translate-x-2": !isBelowPageHeader },
               {
-                "!fixed top-4 left-4 bg-background-base border border-border":
+                "!fixed top-3 left-3 bg-background-subtle border border-border rounded-sm":
                   isBelowPageHeader,
               },
             ])}

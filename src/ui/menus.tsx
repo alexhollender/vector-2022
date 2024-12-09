@@ -51,6 +51,7 @@ export function PinnableMenu({
       className={Utils.cx([
         "z-10",
         containerClassName,
+        { "z-20": isOpen },
         { relative: !isPinned },
       ])}
     >
