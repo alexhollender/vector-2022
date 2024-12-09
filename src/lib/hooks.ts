@@ -6,33 +6,27 @@ import * as React from "react";
 import * as Utils from "@/lib/utils";
 import * as Types from "@/lib/types";
 
-export function usePageData(
-  articleSlug: string,
-  currentLanguage: string,
-  routeType: Types.RouteType
-) {
+export function usePageData(articleSlug: string, routeType: Types.RouteType) {
   const {
+    language,
     setArticleSlug,
     setArticleTitle,
     setArticleContent,
     setArticleTableOfContents,
     setTalkContent,
     setTalkTableOfContents,
-    setLanguage,
     setRouteType,
   } = Context.useGlobalContext();
 
   // Set all the basic data
   React.useEffect(() => {
-    setLanguage(currentLanguage);
     setRouteType(routeType);
     setArticleSlug(articleSlug);
     setArticleTitle(Utils.formatArticleTitle(articleSlug));
   }, [
-    currentLanguage,
     routeType,
     articleSlug,
-    setLanguage,
+    language,
     setRouteType,
     setArticleSlug,
     setArticleTitle,
@@ -43,7 +37,7 @@ export function usePageData(
       try {
         const pageData = await Api.getPageContents(
           articleSlug,
-          currentLanguage,
+          language,
           routeType
         );
 
@@ -62,7 +56,7 @@ export function usePageData(
     fetchPageData();
   }, [
     articleSlug,
-    currentLanguage,
+    language,
     routeType,
     setArticleContent,
     setArticleTableOfContents,
@@ -119,7 +113,6 @@ export function useActiveSection(sections: Types.Section[]) {
 
     ["TopOfPage", ...getAnchors(sections)].forEach((anchor) => {
       const element = document.getElementById(anchor);
-      console.log(anchor, element);
       if (element) observer.observe(element);
     });
 

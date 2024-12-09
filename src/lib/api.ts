@@ -6,7 +6,7 @@ export async function getPageContents(
   type: Types.RouteType
 ): Promise<Types.PageData> {
   const pageTitle = type === "talk" ? `Talk:${title}` : title;
-
+  console.log(lang);
   try {
     const [contentData, tocData] = await Promise.all([
       fetch(
