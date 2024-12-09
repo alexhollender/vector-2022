@@ -6,6 +6,7 @@ export default function LanguageMenu() {
     <Ui.Menus.PinnableMenu
       name="languageMenu"
       left={true}
+      menuClassName="-mr-3"
       openCloseMenuButton={
         <Ui.Buttons.ButtonQuietProgressive
           className="-mr-[12px]"

@@ -6,7 +6,7 @@ export default function PageHeader() {
   const { articleTitle, menuState } = Context.useGlobalContext();
 
   return (
-    <header className="flex items-center border-b border-border">
+    <header className="h-10 flex items-center border-b border-border">
       <div className="flex items-center gap-x-2 grow">
         {!menuState.tableOfContents.isPinned && (
           <Ui.Menus.PinnableMenu

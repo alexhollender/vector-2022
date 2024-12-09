@@ -26,7 +26,7 @@ export default function PageToolbar() {
         {isLoggedIn && (
           <Ui.Buttons.IconButton
             icon={<Icons.Watch />}
-            className="ml-2.5 scale-90 self-center"
+            className="ml-2.5 scale-90 translate-y-1"
           />
         )}
         {!menuState.toolsMenu.isPinned && (
