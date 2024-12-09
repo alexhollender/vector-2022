@@ -48,7 +48,11 @@ export function PinnableMenu({
   return (
     <div
       ref={menuRef}
-      className={Utils.cx([containerClassName, { relative: !isPinned }])}
+      className={Utils.cx([
+        "z-10",
+        containerClassName,
+        { relative: !isPinned },
+      ])}
     >
       {!isPinned &&
         openCloseMenuButton &&

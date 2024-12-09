@@ -5,7 +5,7 @@ import * as Icons from "@/icons/icons";
 
 export default function StickyHeader() {
   const { isLoggedIn, articleTitle } = Context.useGlobalContext();
-  const isScrolledPastTop = Hooks.useBelowTop();
+  const isScrolledPastTop = Hooks.useIsBelowElement("Top");
 
   return (
     <header

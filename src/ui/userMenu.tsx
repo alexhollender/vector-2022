@@ -14,7 +14,7 @@ export function UserToolbarLoggedOut() {
       <Link href="/">Donate</Link>
       <Link href="/">Create account</Link>
       <button onClick={() => setIsLoggedIn(true)}>
-        <Link href="/">Log in</Link>
+        <Link href="">Log in</Link>
       </button>
       <UserMenuLoggedOut />
     </>

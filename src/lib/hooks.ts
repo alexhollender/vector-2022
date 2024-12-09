@@ -133,14 +133,14 @@ export function useActiveSection(sections: Types.Section[]) {
   return { activeSection, isSectionActive };
 }
 
-export function useBelowTop() {
-  const [isBelowTop, setIsBelowTop] = React.useState(false);
+export function useIsBelowElement(elementId: string) {
+  const [isBelow, setIsBelow] = React.useState(false);
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          setIsBelowTop(!entry.isIntersecting);
+          setIsBelow(!entry.isIntersecting);
         });
       },
       {
@@ -149,13 +149,13 @@ export function useBelowTop() {
       }
     );
 
-    const topElement = document.getElementById("top");
-    if (topElement) {
-      observer.observe(topElement);
+    const element = document.getElementById(elementId);
+    if (element) {
+      observer.observe(element);
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [elementId]);
 
-  return isBelowTop;
+  return isBelow;
 }
