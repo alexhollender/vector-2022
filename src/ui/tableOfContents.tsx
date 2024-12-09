@@ -80,7 +80,7 @@ export default function TableOfContents() {
               },
             ])}
           >
-            <span>{section.line}</span>
+            <span dangerouslySetInnerHTML={{ __html: section.line }} />
           </a>
         </div>
         {hasChildren && (isExpanded || !isLevel1) && (
@@ -103,10 +103,13 @@ export default function TableOfContents() {
         <li className="py-[6px]">
           <div>
             <a
-              href="#top"
+              href="#Header"
               className={Utils.cx([
                 "transition-colors duration-200 visited:text-progressive",
-                { "text-text-base font-bold": activeSection === "top" },
+                {
+                  "text-text-base font-bold visited:text-text-base":
+                    activeSection === "TopOfPage",
+                },
               ])}
             >
               <span>(Top)</span>

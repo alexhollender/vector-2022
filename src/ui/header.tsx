@@ -6,7 +6,7 @@ export default function Header() {
   const { menuState, isLoggedIn } = Context.useGlobalContext();
 
   return (
-    <header id="Top" className="flex gap-x-2 lg:gap-x-4 pt-2">
+    <header id="Header" className="flex gap-x-2 lg:gap-x-4 pt-2">
       <div className="flex grow justify-between lg:justify-start items-center gap-x-7">
         <div className="flex items-center gap-x-[14px]">
           {!menuState.mainMenu.isPinned && (

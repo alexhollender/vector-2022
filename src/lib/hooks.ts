@@ -93,7 +93,7 @@ export function useWikiSearch(searchTerm: string) {
 }
 
 export function useActiveSection(sections: Types.Section[]) {
-  const [activeSection, setActiveSection] = React.useState<string>("top");
+  const [activeSection, setActiveSection] = React.useState<string>("TopOfPage");
 
   React.useEffect(() => {
     const getAnchors = (sections: Types.Section[]): string[] =>
@@ -109,14 +109,17 @@ export function useActiveSection(sections: Types.Section[]) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
         });
       },
-      { rootMargin: "0px 0px -90% 0px", threshold: 0 }
+      { rootMargin: "0px 0px -80% 0px", threshold: 0 }
     );
 
-    ["top", ...getAnchors(sections)].forEach((anchor) => {
+    ["TopOfPage", ...getAnchors(sections)].forEach((anchor) => {
       const element = document.getElementById(anchor);
+      console.log(anchor, element);
       if (element) observer.observe(element);
     });
 
