@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Footer = () => {
   return (
     <div className="mw-footer-container">
@@ -10,101 +12,101 @@ const Footer = () => {
           </li>
           <li id="footer-info-copyright">
             Text is available under the{" "}
-            <a
+            <Link
               href="/wiki/Wikipedia:Text_of_the_Creative_Commons_Attribution-ShareAlike_4.0_International_License"
               title="Wikipedia:Text of the Creative Commons Attribution-ShareAlike 4.0 International License"
             >
               Creative Commons Attribution-ShareAlike 4.0 License
-            </a>
+            </Link>
             ; additional terms may apply. By using this site, you agree to the{" "}
-            <a
+            <Link
               href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use"
               className="extiw"
               title="foundation:Special:MyLanguage/Policy:Terms of Use"
             >
               Terms of Use
-            </a>{" "}
+            </Link>{" "}
             and{" "}
-            <a
+            <Link
               href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy"
               className="extiw"
               title="foundation:Special:MyLanguage/Policy:Privacy policy"
             >
               Privacy Policy
-            </a>
+            </Link>
             . Wikipedia® is a registered trademark of the{" "}
-            <a
+            <Link
               rel="nofollow"
               className="external text"
               href="https://wikimediafoundation.org/"
             >
               Wikimedia Foundation, Inc.
-            </a>
+            </Link>
             , a non-profit organization.
           </li>
         </ul>
 
         <ul id="footer-places">
           <li id="footer-places-privacy">
-            <a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy">
+            <Link href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy">
               Privacy policy
-            </a>
+            </Link>
           </li>
           <li id="footer-places-about">
-            <a href="/wiki/Wikipedia:About">About Wikipedia</a>
+            <Link href="/wiki/Wikipedia:About">About Wikipedia</Link>
           </li>
           <li id="footer-places-disclaimers">
-            <a href="/wiki/Wikipedia:General_disclaimer">Disclaimers</a>
+            <Link href="/wiki/Wikipedia:General_disclaimer">Disclaimers</Link>
           </li>
           <li id="footer-places-contact">
-            <a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">
+            <Link href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">
               Contact Wikipedia
-            </a>
+            </Link>
           </li>
           <li id="footer-places-wm-codeofconduct">
-            <a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Universal_Code_of_Conduct">
+            <Link href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Universal_Code_of_Conduct">
               Code of Conduct
-            </a>
+            </Link>
           </li>
           <li id="footer-places-developers">
-            <a href="https://developer.wikimedia.org">Developers</a>
+            <Link href="https://developer.wikimedia.org">Developers</Link>
           </li>
           <li id="footer-places-statslink">
-            <a href="https://stats.wikimedia.org/#/en.wikipedia.org">
+            <Link href="https://stats.wikimedia.org/#/en.wikipedia.org">
               Statistics
-            </a>
+            </Link>
           </li>
           <li id="footer-places-cookiestatement">
-            <a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Cookie_statement">
+            <Link href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Cookie_statement">
               Cookie statement
-            </a>
+            </Link>
           </li>
           <li id="footer-places-mobileview">
-            <a
+            <Link
               href="//en.m.wikipedia.org/w/index.php?title=China&amp;mobileaction=toggle_view_mobile"
               className="noprint stopMobileRedirectToggle"
             >
               Mobile view
-            </a>
+            </Link>
           </li>
         </ul>
 
         <ul id="footer-icons" className="noprint">
           <li id="footer-copyrightico">
-            <a
+            <Link
               href="https://wikimediafoundation.org/"
               className="cdx-button cdx-button--fake-button cdx-button--size-large cdx-button--fake-button--enabled w-24"
             >
               <FoundationIcon />
-            </a>
+            </Link>
           </li>
           <li id="footer-poweredbyico">
-            <a
+            <Link
               href="https://www.mediawiki.org/"
               className="cdx-button cdx-button--fake-button cdx-button--size-large cdx-button--fake-button--enabled w-24"
             >
               <MediaWikiIcon />
-            </a>
+            </Link>
           </li>
         </ul>
       </footer>

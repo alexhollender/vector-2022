@@ -11,7 +11,7 @@ export default function ArticlePage() {
   const params = useParams();
   const articleSlug = Utils.decodeSlug(params.article as string);
   const searchParams = useSearchParams();
-  const { language, setLanguage } = Context.useGlobalContext();
+  const { setLanguage } = Context.useGlobalContext();
 
   const languageParam: string | null = searchParams.get("lang");
 
