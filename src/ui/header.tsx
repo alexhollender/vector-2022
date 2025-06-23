@@ -32,7 +32,7 @@ export default function Header() {
           <Ui.Buttons.IconButton icon={<Icons.Search />} />
         </div>
       </div>
-      <div className="flex gap-x-2 items-center">
+      <div className="hidden sm:flex gap-x-2 items-center">
         {!isLoggedIn && <Ui.UserMenu.UserToolbarLoggedOut />}
         {isLoggedIn && <Ui.UserMenu.UserToolbarLoggedIn />}
       </div>

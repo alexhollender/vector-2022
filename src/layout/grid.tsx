@@ -53,7 +53,7 @@ export default function Grid({
       )}
       <div
         className={Utils.cx([
-          "medium:max-w-[948px]",
+          "w-full medium:max-w-[948px]",
           {
             "m-auto": Boolean(!showRightColumn),
           },

@@ -7,7 +7,7 @@ export default function PageToolbar() {
   const { articleSlug, menuState, isLoggedIn } = Context.useGlobalContext();
 
   return (
-    <header className="flex justify-between items-end h-9 mt-[1px] border-b border-background-disabled">
+    <header className="hidden sm:flex justify-between items-end h-9 mt-[1px] border-b border-background-disabled">
       <Ui.Buttons.Tabs
         tabs={[
           { label: "Article", href: `/wiki/${articleSlug}` },
