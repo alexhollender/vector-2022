@@ -56,10 +56,16 @@ export function WikiProvider({ children }: { children: React.ReactNode }) {
 
   // Route & URL params
   const [routeType, setRouteType] = React.useState<Types.RouteType>("article");
-  const [language, setLanguage] = React.useState(
-    () => localStorage.getItem("language") ?? "en"
-  );
+  const [language, setLanguage] = React.useState("en");
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+
+  // Initialize language from localStorage on client side
+  React.useEffect(() => {
+    const storedLanguage = localStorage.getItem("language");
+    if (storedLanguage) {
+      setLanguage(storedLanguage);
+    }
+  }, []);
 
   // Get logged in state from localStorage if it exists
   React.useEffect(() => {
