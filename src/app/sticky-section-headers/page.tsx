@@ -46,11 +46,35 @@ export default StickySectionHeadersPage;
 
 const CollapsibleSection = ({ title }: { title: string }) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
+  const sectionRef = React.useRef<HTMLElement>(null);
+
+  const handleToggle = () => {
+    const newExpandedState = !isExpanded;
+    setIsExpanded(newExpandedState);
+
+    // If collapsing, scroll to the section header
+    if (!newExpandedState && sectionRef.current) {
+      // Use a small delay to ensure the collapse animation completes
+      requestAnimationFrame(() => {
+        const rect = sectionRef.current?.getBoundingClientRect();
+        if (rect) {
+          // Account for the mt-4 margin (16px) by scrolling to the actual start of the section
+          const scrollTop = window.pageYOffset + rect.top - 16;
+          window.scrollTo({
+            top: scrollTop,
+          });
+        }
+      });
+    }
+  };
 
   return (
-    <section className="mt-4 pb-2 relative text-base border-b border-[#dadde3]">
+    <section
+      ref={sectionRef}
+      className="mt-4 pb-2 relative text-base border-b border-[#dadde3]"
+    >
       <button
-        onClick={() => setIsExpanded(!isExpanded)}
+        onClick={handleToggle}
         className="w-full h-12 flex items-center gap-x-2 cursor-pointer sticky top-0 bg-white"
       >
         <div className={`w-4 h-4 ${isExpanded ? "-rotate-90" : "rotate-90"}`}>
