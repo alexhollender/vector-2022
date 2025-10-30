@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import globe from "../../public/images/globe.png";
-import wordmark from "../../public/images/wordmark-en.svg";
-import tagline from "../../public/images/tagline-en.svg";
+import globe from "@public/images/globe.png";
+import wordmark from "@public/images/wordmark-en.svg";
+import tagline from "@public/images/tagline-en.svg";
 
 export default function Logo() {
   return (
