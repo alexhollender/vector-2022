@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import GithubIcon from "@public/images/githubicon.jpg";
 
-const AttributionDemoPage: React.FC = () => {
+const CardPage: React.FC = () => {
   const [optionOne, setOptionOne] = React.useState(false);
   const [optionTwo, setOptionTwo] = React.useState(false);
   const [optionThree, setOptionThree] = React.useState(false);
@@ -14,65 +14,51 @@ const AttributionDemoPage: React.FC = () => {
 
   return (
     <>
-      <div className="w-full h-full fixed inset-0 bg-[#1D1E1F]">
-        <div className="flex flex-col items-center justify-center h-full">
-          <div className="p-12 flex flex-col items-center justify-center gap-y-10">
-            <h1 className="text-2xl font-bold italic uppercase text-white font-sans text-center">
-              Place cards on the timeline in the correct order
-            </h1>
-            <div className="bg-[#9DADBA] px-8 py-4 text-xl font-bold italic uppercase text-[#1D1E1F] rounded-lg -skew-x-12">
-              <p className="skew-x-12">Best Streak</p>
-              <p className="text-4xl skew-x-12">12</p>
+      <div className="w-full h-full fixed inset-0 bg-[#f2f2f2]">
+        <div className="mt-12 flex flex-col items-center h-full">
+          <div className="w-64 h-96 p-4 bg-white rounded-lg shadow-sm flex flex-col justify-between text-xl">
+            <div>
+              <p className="font-bold mb-2">Platonic Academy</p>
+              <p>The Academy was founded by Plato in ca. 387 BC in Athens.</p>
             </div>
-            <button className="bg-[#025B8E] px-6 py-3 text-xl font-bold italic uppercase text-white rounded-full">
-              Start Game
-            </button>
-          </div>
-        </div>
-
-        <footer className="w-full pb-6 fixed bottom-0 left-0 right-0">
-          <div className="px-12 flex flex-col items-center justify-center gap-y-4">
-            <p className="text-base text-white text-center">
-              All data sourced from{" "}
-              <Link
-                href="https://www.wikidata.org/"
-                className="text-white underline"
-              >
-                Wikidata
-              </Link>{" "}
-              and{" "}
-              <Link
-                href="https://www.wikipedia.org/"
-                className="text-white underline"
-              >
-                Wikipedia
-              </Link>
-              .
-            </p>
-            <p className="text-base text-white text-center">
-              Have feedback? Please report it on{" "}
-              <Link
-                href="https://github.com/wikidata/attribution-demo"
-                className="text-white underline"
-              >
-                GitHub
-              </Link>
-              .
-            </p>
-            <div className="flex items-center justify-center gap-x-4">
-              <Image src={GithubIcon} width={120} alt="Github Icon" />
-              {optionOne && (
-                <div className="flex flex-col items-center justify-center gap-y-1">
-                  <p className="text-white text-xs">Powered by</p>
-                  <div className="h-4 w-auto text-white">
+            <div className="flex flex-col items-center justify-center gap-y-2">
+              <div className="flex items-center justify-center gap-x-2">
+                {optionFour && (
+                  <p className="text-sm text-center">Last edited yesterday</p>
+                )}
+                {optionFour && optionThree && (
+                  <span className="text-sm text-center">•</span>
+                )}
+                {optionThree && (
+                  <p className="text-sm text-center">34 editors</p>
+                )}
+              </div>
+              {optionFive && (
+                <p className="text-sm text-center">12 references</p>
+              )}
+              {optionTwo && (
+                <Link
+                  href="https://en.wikipedia.org/wiki/Platonic_Academy"
+                  className="underline text-sm"
+                >
+                  Contribute to this article
+                </Link>
+              )}
+              <Link href="https://en.wikipedia.org/wiki/Platonic_Academy">
+                {!optionOne && (
+                  <span className="underline text-sm">Wikipedia</span>
+                )}
+                {optionOne && (
+                  <div className="h-3.5 my-1 w-auto text-black">
                     <Logo />
                   </div>
-                </div>
-              )}
+                )}
+              </Link>
             </div>
           </div>
-        </footer>
+        </div>
       </div>
+
       <ConfigPanel
         optionOne={optionOne}
         setOptionOne={setOptionOne}
@@ -89,7 +75,7 @@ const AttributionDemoPage: React.FC = () => {
   );
 };
 
-export default AttributionDemoPage;
+export default CardPage;
 
 interface ConfigPanelProps {
   optionOne: boolean;
@@ -133,7 +119,7 @@ const ConfigPanel: React.FC<ConfigPanelProps> = ({
   );
 
   return (
-    <div className="w-64 bg-white rounded-lg fixed top-3 left-3 shadow-lg p-4">
+    <div className="w-64 bg-white rounded-lg fixed bottom-3 right-3 shadow-lg p-4">
       <div className="flex flex-col gap-3 text-sm text-gray-900">
         <CheckboxItem
           label="Show Wikipedia branding"
@@ -141,22 +127,22 @@ const ConfigPanel: React.FC<ConfigPanelProps> = ({
           onChange={setOptionOne}
         />
         <CheckboxItem
-          label="Item 2"
+          label="Show contribute link"
           checked={optionTwo}
           onChange={setOptionTwo}
         />
         <CheckboxItem
-          label="Item 3"
+          label="Show editor count"
           checked={optionThree}
           onChange={setOptionThree}
         />
         <CheckboxItem
-          label="Item 4"
+          label="Show last edited date"
           checked={optionFour}
           onChange={setOptionFour}
         />
         <CheckboxItem
-          label="Item 5"
+          label="Show reference count"
           checked={optionFive}
           onChange={setOptionFive}
         />
