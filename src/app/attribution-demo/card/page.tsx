@@ -2,8 +2,6 @@
 
 import * as React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import GithubIcon from "@public/images/githubicon.jpg";
 
 const CardPage: React.FC = () => {
   const [optionOne, setOptionOne] = React.useState(false);
